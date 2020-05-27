@@ -3,9 +3,9 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
 
-import easyInterfacingGui.Elements 1.0 as EiElements
+import easyAppGui.Elements 1.0 as EaElements
 
-EiElements.ApplicationWindow {
+EaElements.ApplicationWindow {
     id: window
 
     Column {
@@ -18,12 +18,12 @@ EiElements.ApplicationWindow {
             color: "white"
         }
 
-        EiElements.Button {
+        EaElements.Button {
             text: "button 1"
             onClicked: setLabelText(text)
         }
 
-        EiElements.Button {
+        EaElements.Button {
             text: "button 2"
             onClicked: setLabelText(text)
         }

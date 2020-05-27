@@ -4,15 +4,15 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
 import QtQuick.Templates 2.12 as T
 
-import easyInterfacingGui.Style 1.0 as EiStyle
+import easyAppGui.Style 1.0 as EaStyle
 
 T.ApplicationWindow {
     id: window
 
     visible: true
 
-    width: EiStyle.Sizes.appWidth
-    height: EiStyle.Sizes.appHeight
+    width: EaStyle.Sizes.appWidth
+    height: EaStyle.Sizes.appHeight
 
-    color: EiStyle.Colors.appBackgroundColor
+    color: EaStyle.Colors.appBackgroundColor
 }

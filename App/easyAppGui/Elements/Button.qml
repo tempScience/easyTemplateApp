@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
 import QtQuick.Templates 2.12 as T
 
-import easyInterfacingGui.Style 1.0 as EiStyle
+import easyAppGui.Style 1.0 as EaStyle
 
 T.Button {
     id: control
@@ -38,7 +38,7 @@ T.Button {
         implicitWidth: 100
         implicitHeight: 40
         visible: !control.flat || control.down || control.checked || control.highlighted
-        color: EiStyle.Colors.buttonBackgroundColor
+        color: EaStyle.Colors.buttonBackgroundColor
         border.color: control.palette.highlight
         border.width: control.visualFocus ? 2 : 0
     }
