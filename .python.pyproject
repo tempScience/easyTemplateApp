@@ -1,0 +1,28 @@
+{
+"files": [
+    "App/main.py",
+
+    "App/Logic/ProjectSentinel.py",
+    "App/Logic/PyQmlProxy.py",
+    "App/Logic/QtInterface.py",
+
+    "App/Logic/DisplayModels/AtomAdpsModel.py",
+    "App/Logic/DisplayModels/AtomMspsModel.py",
+    "App/Logic/DisplayModels/AtomSitesModel.py",
+    "App/Logic/DisplayModels/BaseModel.py",
+    "App/Logic/DisplayModels/BraggPeaksModel.py",
+    "App/Logic/DisplayModels/CalculatedDataModel.py",
+    "App/Logic/DisplayModels/CellBoxModel.py",
+    "App/Logic/DisplayModels/CellParametersModel.py",
+    "App/Logic/DisplayModels/FileStructureModel.py",
+    "App/Logic/DisplayModels/FitablesModel.py",
+    "App/Logic/DisplayModels/MeasuredDataModel.py",
+    "App/Logic/DisplayModels/ProjectModel.py",
+    "App/Logic/DisplayModels/StatusModel.py",
+
+    "App/easyAppLogic/QtLogger.py",
+    "App/easyAppLogic/Helpers.py",
+    "App/easyAppLogic/ReleaseReader.py",
+    "App/easyAppLogic/SeparateRefiner.py"
+    ]
+}
