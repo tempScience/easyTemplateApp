@@ -3,9 +3,10 @@ import QtQuick.Templates 2.14 as T
 import QtQuick.Controls 2.14
 import QtQuick.Controls.impl 2.14
 
-import Globals 1.0 as Globals
-import Templates.Animations 1.0 as Animations
-import Templates.Controls 1.0
+import easyAppGui.Style 1.0 as EaStyle
+import easyAppGui.Globals 1.0 as EaGlobals
+import easyAppGui.Animations 1.0 as EaAnimations
+import easyAppGui.Elements 1.0 as EaElements
 
 T.MenuItem {
     id: control
@@ -24,7 +25,7 @@ T.MenuItem {
     icon.height: 24
     ///icon.color: enabled ? Material.foreground : Material.hintTextColor
 
-    indicator: CheckIndicator {
+    indicator: EaElements.CheckIndicator {
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         visible: control.checkable
@@ -58,9 +59,9 @@ T.MenuItem {
         font: control.font
 
         ///color: control.enabled ? control.Material.foreground : control.Material.hintTextColor
-        color: control.enabled ? Globals.Colors.themeForeground : Globals.Colors.themeForegroundDisabled
+        color: control.enabled ? EaStyle.Colors.themeForeground : EaStyle.Colors.themeForegroundDisabled
         Behavior on color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
     }
 
@@ -69,7 +70,7 @@ T.MenuItem {
         //height: 20//control.height
         ///implicitHeight: control.Material.menuItemHeight
         ///color: control.highlighted ? control.Material.listHighlightColor : "transparent"
-        color: control.hovered ? Globals.Colors.appBarButtonBackgroundHovered : "transparent"
+        color: control.hovered ? EaStyle.Colors.appBarButtonBackgroundHovered : "transparent"
         Behavior on color {
             PropertyAnimation {
                 duration: control.hovered ? 500 : 0

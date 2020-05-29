@@ -4,9 +4,10 @@ import QtQuick.Controls 2.14
 import QtQuick.Controls.impl 2.14
 import QtQuick.Templates 2.14 as T
 
-import Globals 1.0 as Globals
-import Templates.Animations 1.0 as Animations
-import Templates.Controls 1.0
+import easyAppGui.Style 1.0 as EaStyle
+import easyAppGui.Globals 1.0 as EaGlobals
+import easyAppGui.Animations 1.0 as EaAnimations
+import easyAppGui.Elements 1.0 as EaElements
 
 T.ComboBox {
     id: control
@@ -17,26 +18,22 @@ T.ComboBox {
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    topInset: Globals.Sizes.fontPixelSize * 0.5
-    bottomInset: Globals.Sizes.fontPixelSize * 0.5
+    topInset: EaStyle.Sizes.fontPixelSize * 0.5
+    bottomInset: EaStyle.Sizes.fontPixelSize * 0.5
 
     leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
 
-    ///Material.elevation: flat ? 0 : control.pressed ? 8 : 2
-    ///Material.background: flat ? Globals.Colors.mainAreaBackground : undefined
-    ///Material.foreground: flat ? undefined : Material.primaryTextColor
-
-    font.family: Globals.Fonts.sans
-    font.pixelSize: Globals.Sizes.fontPixelSize
+    font.family: EaStyle.Fonts.fontFamily
+    font.pixelSize: EaStyle.Fonts.fontPixelSize
 
     flat: true
     hoverEnabled: true
     editable: false
 
-    delegate: MenuItem {
+    delegate: EaElements.MenuItem {
         width: parent.width
-        height: Globals.Sizes.comboBoxHeight
+        height: EaStyle.Sizes.comboBoxHeight
 
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
         ///Material.foreground: control.currentIndex === index ? parent.Material.accent : parent.Material.foreground
@@ -48,20 +45,20 @@ T.ComboBox {
         x: control.mirrored ? control.padding : control.width - width - control.rightPadding
         y: control.topPadding + (control.availableHeight - height) / 2
 
-        text: "\ue801"
+        text: "\uf0d7"
 
-        font.family: Globals.Fonts.icons
-        font.pixelSize: Globals.Sizes.fontPixelSize
+        font.family: EaStyle.Fonts.iconsFamily
+        font.pixelSize: EaStyle.Fonts.fontPixelSize
 
         ///color: control.enabled ? control.Material.foreground : control.Material.hintTextColor
-        color: control.enabled ? Globals.Colors.themeForeground :  Globals.Colors.themeForegroundDisabled
+        color: control.enabled ? EaStyle.Colors.themeForeground :  EaStyle.Colors.themeForegroundDisabled
         Behavior on color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
     }
 
     contentItem: T.TextField {
-        padding: Globals.Sizes.fontPixelSize * 0.5
+        padding: EaStyle.Sizes.fontPixelSize * 0.5
         leftPadding: control.editable ? 2 : control.mirrored ? 0 : 12
         rightPadding: control.editable ? 2 : control.mirrored ? 12 : 0
 
@@ -82,9 +79,9 @@ T.ComboBox {
         ///selectedTextColor: control.Material.primaryHighlightedTextColor
 
         ///color: control.enabled ? control.Material.foreground : control.Material.hintTextColor
-        color: control.enabled ? Globals.Colors.themeForeground :  Globals.Colors.themeForegroundDisabled
+        color: control.enabled ? EaStyle.Colors.themeForeground :  EaStyle.Colors.themeForegroundDisabled
         Behavior on color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
 
         cursorDelegate: CursorDelegate { }
@@ -92,23 +89,23 @@ T.ComboBox {
 
     background: Rectangle {
         implicitWidth: 120
-        implicitHeight: Globals.Sizes.comboBoxHeight
+        implicitHeight: EaStyle.Sizes.comboBoxHeight
 
         radius: control.flat ? 0 : 2
 
         ///color: !control.editable ? control.Material.dialogColor : "transparent"
         color: control.hovered ?
                    (control.pressed ?
-                        Globals.Colors.appBarComboBoxBackgroundPressed :
-                        Globals.Colors.appBarComboBoxBackgroundHovered) :
-                    Globals.Colors.appBarComboBoxBackground
+                        EaStyle.Colors.appBarComboBoxBackgroundPressed :
+                        EaStyle.Colors.appBarComboBoxBackgroundHovered) :
+                    EaStyle.Colors.appBarComboBoxBackground
         Behavior on color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
 
-        border.color: Globals.Colors.appBarComboBoxBorder
+        border.color: EaStyle.Colors.appBarComboBoxBorder
         Behavior on border.color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
     }
 
@@ -117,12 +114,8 @@ T.ComboBox {
         width: control.width
         height: Math.min(contentItem.implicitHeight, control.Window.height - topMargin - bottomMargin)
         transformOrigin: Item.Top
-        topMargin: Globals.Sizes.fontPixelSize
-        bottomMargin: Globals.Sizes.fontPixelSize
-
-        ///Material.theme: control.Material.theme
-        ///Material.accent: control.Material.accent
-        ///Material.primary: control.Material.primary
+        topMargin: EaStyle.Sizes.fontPixelSize
+        bottomMargin: EaStyle.Sizes.fontPixelSize
 
         enter: Transition {
             // grow_fade_in
@@ -148,18 +141,17 @@ T.ComboBox {
 
         background: Rectangle {
             radius: 2
-            color: Globals.Colors.dialogBackground
-            ///color: parent.Material.dialogColor
+            color: EaStyle.Colors.dialogBackground
             Behavior on color {
                 PropertyAnimation {
-                    duration: Globals.Variables.themeChangeTime
+                    duration: EaStyle.Times.themeChange
                     alwaysRunToEnd: true
                     easing.type: Easing.OutQuint
                 }
             }
 
             layer.enabled: control.enabled
-            layer.effect: ElevationEffect {
+            layer.effect: EaElements.ElevationEffect {
                 elevation: 8
             }
         }

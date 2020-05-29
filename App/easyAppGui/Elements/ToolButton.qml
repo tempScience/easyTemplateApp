@@ -40,7 +40,7 @@ T.ToolButton {
         icon: control.icon
         text: control.text
 
-        ///font.family: EaStyle.Fonts.icons
+        font.family: EaStyle.Fonts.iconsFamily
         ///font.pixelSize: control.font.pixelSize * 1.25
 
         color: !control.enabled ?

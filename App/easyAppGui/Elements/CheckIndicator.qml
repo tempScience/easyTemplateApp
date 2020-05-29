@@ -1,14 +1,15 @@
 import QtQuick 2.14
 
-import Globals 1.0 as Globals
-import Templates.Animations 1.0 as Animations
-import Templates.Controls 1.0
+import easyAppGui.Style 1.0 as EaStyle
+import easyAppGui.Globals 1.0 as EaGlobals
+import easyAppGui.Animations 1.0 as EaAnimations
+import easyAppGui.Elements 1.0 as EaElements
 
 Rectangle {
     id: indicatorItem
 
-    implicitWidth: Globals.Sizes.fontPixelSize
-    implicitHeight: Globals.Sizes.fontPixelSize
+    implicitWidth: EaStyle.Sizes.fontPixelSize
+    implicitHeight: EaStyle.Sizes.fontPixelSize
 
     radius: 2
 
@@ -36,25 +37,29 @@ Rectangle {
     }
     */
 
-    Label {
+    EaElements.Label {
         id: checkSymbol
 
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
 
-        text: "\ue800"
+        text: "\ue800" // ????
 
-        font.family: Globals.Fonts.icons
-        font.pixelSize: Globals.Sizes.fontPixelSize
+        font.family: EaStyle.Fonts.fontFamily
+        font.pixelSize: EaStyle.Fonts.fontPixelSize
 
         scale: indicatorItem.checkState === Qt.Checked ? 1 : 0
-        Behavior on scale { NumberAnimation { duration: 100 } }
+        Behavior on scale {
+            NumberAnimation {
+                duration: 100
+            }
+        }
 
         color: indicatorItem.enabled ?
-                   Globals.Colors.checkSymbol :
-                   Globals.Colors.themeForegroundDisabled
+                   "red" : //EaStyle.Colors.checkSymbol :
+                   EaStyle.Colors.themeForegroundDisabled
         Behavior on color {
-            Animations.ThemeChange {}
+            EaAnimations.ThemeChange {}
         }
     }
 
@@ -65,7 +70,11 @@ Rectangle {
         height: 3
 
         scale: indicatorItem.checkState === Qt.PartiallyChecked ? 1 : 0
-        Behavior on scale { NumberAnimation { duration: 100 } }
+        Behavior on scale {
+            NumberAnimation {
+                duration: 100
+            }
+        }
     }
 
     states: [
