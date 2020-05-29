@@ -16,10 +16,10 @@ QtObject {
     property int appWindowWidthLarge: scalePx(620)      // 4 comboboxes in appBar
     property int appWindowWidthVeryLarge: scalePx(880)  // 4 comboboxes with labels in appBar
 
-    property int appWindowMinimumWidth: appWindowWidthVerySmall
-    property int appWindowMinimumHeight: appWindowHeightVerySmall
+    property int appWindowMinimumWidth: appWindowWidthMedium
+    property int appWindowMinimumHeight: appWindowHeightMedium
 
-    property int appWindowWidth: Qt.platform.pluginName === "wasm" ? Screen.width : Math.min(appWindowWidthLarge, Screen.width)
+    property int appWindowWidth: Qt.platform.pluginName === "wasm" ? Screen.width : Math.min(appWindowWidthVeryLarge, Screen.width)
     property int appWindowHeight: Qt.platform.pluginName === "wasm" ? Screen.height : Math.min(appWindowHeightLarge, Screen.height)
 
     property int appWindowX: Qt.platform.pluginName === "wasm" ? 0 : (Screen.width - appWindowWidth) * 0.5

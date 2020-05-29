@@ -5,7 +5,7 @@ import QtQuick 2.15
 QtObject {
 
     // Initial application parameters
-    property int appBarCurrentIndex: 5
+    property int appBarCurrentIndex: 0
     property int appWindowFlags: Qt.Window // Qt.FramelessWindowHint | Qt.Dialog
 
     // Initial application elements visibility

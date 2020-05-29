@@ -9,7 +9,7 @@ import easyAppGui.Components 1.0 as EaComponents
 EaElements.ApplicationWindow {
     id: appWindow
 
-    //property alias appBarTabs: appBar.data
+    property alias appBarTabs: appBar.data
     property alias contentArea: contentAreaContainer.data
     //property alias statusBar: statusBarContainer.data
 
