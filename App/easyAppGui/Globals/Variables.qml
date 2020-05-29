@@ -13,7 +13,4 @@ QtObject {
     property bool showAppStatusBar: true
     property bool showAppPreferencesDialog: false
 
-    onShowAppPreferencesDialogChanged: print("showAppPreferencesDialog", showAppPreferencesDialog)
-
-
 }
