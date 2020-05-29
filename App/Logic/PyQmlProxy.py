@@ -1,12 +1,11 @@
 from PySide2.QtCore import QObject, Slot, Signal, Property
 
 class PyQmlProxy(QObject):
+    appNameChanged = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.appName = "App Name"
-
-    appNameChanged = Signal()
 
     @Property(str, notify=appNameChanged)
     def appName(self):
