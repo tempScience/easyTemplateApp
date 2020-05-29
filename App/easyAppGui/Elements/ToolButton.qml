@@ -6,38 +6,31 @@ import QtQuick.Controls.impl 2.15
 import easyAppGui.Style 1.0 as EaStyle
 import easyAppGui.Animations 1.0 as EaAnimations
 
-//import Globals 1.0 as Globals
-//import Templates.Animations 1.0 as Animations
 //import Templates.Controls 1.0
 
-T.Button {
+T.ToolButton {
     id: control
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+                            implicitContentHeight + topPadding + bottomPadding)
 
-    topInset: 6
-    bottomInset: 6
-    padding: 12
-    horizontalPadding: padding - 4
-    spacing: 6
+    padding: 0
+    spacing: 0
+    leftInset: 0
+    rightInset: 0
+    topInset: 0
+    bottomInset: 0
 
-    font.family: EaStyle.Fonts.fontFamily
-    font.pixelSize: EaStyle.Fonts.fontPixelSize
+    //ToolTip.visible: hovered && ToolTip.text !== ""
 
-    icon.width: 24
-    icon.height: 24
-    ///icon.color: !enabled ? Material.hintTextColor :
-    ///    flat && highlighted ? Material.accentColor :
-    ///    highlighted ? Material.primaryHighlightedTextColor : Material.foreground
-
-    ///Material.elevation: flat ? control.down || control.hovered ? 2 : 0
-    ///                         : control.down ? 8 : 2
-    ///Material.background: flat ? "transparent" : undefined
-
-    flat: true
+    /*
+    ToolTip {
+        text: ToolTip.text
+        visible: control.parent.hovered//hovered && ToolTip.text !== ""
+    }
+    */
 
     contentItem: IconLabel {
         spacing: control.spacing
@@ -46,38 +39,43 @@ T.Button {
 
         icon: control.icon
         text: control.text
-        font: control.font
+
+        ///font.family: EaStyle.Fonts.icons
+        ///font.pixelSize: control.font.pixelSize * 1.25
 
         color: !control.enabled ?
                    EaStyle.Colors.themeForegroundDisabled :
-                   control.highlighted ?
-                       EaStyle.Colors.themeAccent :
-                       EaStyle.Colors.themeForeground
+                   control.checked || control.highlighted ?
+                        EaStyle.Colors.themeAccent :
+                        EaStyle.Colors.themeForeground
         Behavior on color {
             EaAnimations.ThemeChange {}
         }
     }
 
     background: Rectangle {
-        implicitWidth: 64
-        implicitHeight: EaStyle.Sizes.buttonHeight
-
-        radius: 2
-
+        implicitWidth: EaStyle.Sizes.toolButtonHeight
+        implicitHeight: EaStyle.Sizes.toolButtonHeight
+        radius: EaStyle.Sizes.toolButtonHeight * 0.5
         color: rippleArea.containsMouse ?
                    (rippleArea.containsPress ?
                         EaStyle.Colors.appBarButtonBackgroundPressed :
                         EaStyle.Colors.appBarButtonBackgroundHovered) :
                     EaStyle.Colors.appBarButtonBackground
         Behavior on color {
-            EaAnimations.ThemeChange {}
+            PropertyAnimation {
+                duration: rippleArea.containsMouse ? 500 : 0 //Globals.Variables.themeChangeTime
+                alwaysRunToEnd: true
+                easing.type: Easing.OutCubic
+            }
         }
 
         MouseArea {
             id: rippleArea
             anchors.fill: parent
             hoverEnabled: true
-            onClicked: control.clicked()
+            //onClicked: control.clicked()
+            onPressed: mouse.accepted = false
         }
     }
 }
