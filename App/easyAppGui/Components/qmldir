@@ -1,0 +1,8 @@
+module Elements
+
+ApplicationBar 1.0 ApplicationBar.qml
+ApplicationWindow 1.0 ApplicationWindow.qml
+
+StatusBar 1.0 StatusBar.qml
+
+PreferencesDialog 1.0 PreferencesDialog.qml
