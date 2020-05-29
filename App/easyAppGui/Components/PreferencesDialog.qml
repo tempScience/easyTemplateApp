@@ -38,13 +38,15 @@ EaElements.Dialog {
 
             ComboBox {
                 width: EaStyle.Sizes.fontPixelSize * 9
-                model: [qsTr("Dark"), qsTr("Light")]
+                model: [qsTr("Dark"), qsTr("Light"), qsTr("System")]
                 currentIndex: EaStyle.Colors.theme === EaStyle.Colors.DarkTheme ? 0 : 1
                 onCurrentTextChanged: {
                     if (currentIndex === 0 && EaStyle.Colors.theme !== EaStyle.Colors.DarkTheme) {
                         EaStyle.Colors.theme = EaStyle.Colors.DarkTheme
                     } else if (currentIndex === 1 && EaStyle.Colors.theme !== EaStyle.Colors.LightTheme) {
                         EaStyle.Colors.theme = EaStyle.Colors.LightTheme
+                    } else if (currentIndex === 2 && EaStyle.Colors.theme !== EaStyle.Colors.LightTheme) {
+                        EaStyle.Colors.theme = EaStyle.Colors.systemTheme
                     }
                 }
             }
