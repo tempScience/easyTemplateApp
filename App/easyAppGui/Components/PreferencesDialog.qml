@@ -29,14 +29,13 @@ EaElements.Dialog {
         Row {
             spacing: EaStyle.Sizes.fontPixelSize * 0.5
 
-            Label {
-                enabled: false
+             EaElements.Label {
                 width: EaStyle.Sizes.fontPixelSize * 6
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Theme") + ":"
             }
 
-            ComboBox {
+            EaElements.ComboBox {
                 width: EaStyle.Sizes.fontPixelSize * 9
                 model: [qsTr("Dark"), qsTr("Light"), qsTr("System")]
                 currentIndex: EaStyle.Colors.theme === EaStyle.Colors.DarkTheme ? 0 : 1
@@ -55,14 +54,13 @@ EaElements.Dialog {
         Row {
             spacing: EaStyle.Sizes.fontPixelSize * 0.5
 
-            Label {
-                enabled: false
+             EaElements.Label {
                 width: EaStyle.Sizes.fontPixelSize * 6
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Zoom") + ":"
             }
 
-            ComboBox {
+             EaElements.ComboBox {
                 width: EaStyle.Sizes.fontPixelSize * 9
                 model: ["100%", "110%", "120%", "130%", "140%", "150%"]
                 onCurrentTextChanged: {
@@ -77,14 +75,13 @@ EaElements.Dialog {
         Row {
             spacing: EaStyle.Sizes.fontPixelSize * 0.5
 
-            Label {
-                enabled: false
+             EaElements.Label {
                 width: EaStyle.Sizes.fontPixelSize * 6
                 anchors.verticalCenter: parent.verticalCenter
                 text: qsTr("Language") + ":"
             }
 
-            ComboBox {
+             EaElements.ComboBox {
                 width: EaStyle.Sizes.fontPixelSize * 9
                 model: ["English", "Русский"]
 

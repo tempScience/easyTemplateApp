@@ -1,11 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-//import QtQuick.Controls.Material 2.12
-
-//import easyInterface.QtQuick 1.0 as InterfaceQtQuick
-//import easyInterface.App 1.0 as InterfaceApp
-//import easyInterface.Globals 1.0 as InterfaceGlobals
-//import easyInterface.Animations 1.0 as InterfaceAnimations
 
 import easyAppGui.Style 1.0 as EaStyle
 import easyAppGui.Globals 1.0 as EaGlobals
@@ -22,23 +16,20 @@ EaElements.ToolBar {
         id: leftButtons
 
         anchors.left: parent.left
-        anchors.leftMargin: 5
-        height: parent.height
+        anchors.leftMargin: EaStyle.Fonts.fontPixelSize / 2
+        anchors.verticalCenter: parent.verticalCenter
 
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.save
-            text: "A"
+            text: "\uf0c7"
             ToolTip.text: qsTr("Save current state of the project")
         }
 
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.undo
-            text: "B"
+            text: "\uf2ea"
             ToolTip.text: qsTr("Undo")
         }
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.redo
-            text: "C"
+            text: "\uf2f9"
             ToolTip.text: qsTr("Redo")
         }
     }
@@ -48,25 +39,22 @@ EaElements.ToolBar {
         id: rightButtons
 
         anchors.right: parent.right
-        anchors.rightMargin: 5
-        height: parent.height
+        anchors.rightMargin: EaStyle.Fonts.fontPixelSize / 2
+        anchors.verticalCenter: parent.verticalCenter
 
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.preferences
-            text: "D"
+            text: "\uf013"
             ToolTip.text: qsTr("Application preferences")
             onClicked: EaGlobals.Variables.showAppPreferencesDialog = true
         }
 
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.help
-            text: "E"
+            text: "\uf059"
             ToolTip.text: qsTr("Get online help")
         }
 
         EaElements.ToolButton {
-            //icon.source: InterfaceGlobals.Icon.bug
-            text: "F"
+            text: "\uf188"
             ToolTip.text: qsTr("Report a bug or issue")
         }
     }
