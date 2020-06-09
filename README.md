@@ -1,6 +1,8 @@
 # easyTemplateApp
 Template for easyScience applications
 
+[![][61]][62]
+
 ## Download easyTemplate
 * Open **Terminal**
 * Change the current working directory to the location where you want the **easyTemplateApp** directory
@@ -49,3 +51,9 @@ Template for easyScience applications
    ```
    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | POETRY_UNINSTALL=1 python
    ```
+
+<!---URLs--->
+
+<!---LicenseScan--->
+[61]: https://app.fossa.com/api/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp.svg?type=shield
+[62]: https://app.fossa.com/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp?ref=badge_shield
