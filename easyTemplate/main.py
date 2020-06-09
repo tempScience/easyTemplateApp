@@ -4,7 +4,7 @@ from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWidgets import QApplication
 
 import easyappgui
-from easyTemplate.Logic.PyQmlProxy import PyQmlProxy
+from easytemplate.Logic.PyQmlProxy import PyQmlProxy
 
 
 def main():
