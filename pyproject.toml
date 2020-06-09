@@ -7,9 +7,9 @@ license = "LGPL-3.0-only"
 readme = 'README.md'
 
 [tool.poetry.dependencies]
-python = "3.7"
-easyapplogic = "^0.1.0"
-easyappgui = "^0.2.0"
+python = "^3.7"
+easyapplogic = "^0.1"
+easyappgui = "^0.3"
 
 [tool.poetry.dev-dependencies]
 
