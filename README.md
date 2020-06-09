@@ -11,7 +11,6 @@ Template for easyScience applications
   
 ## Install easyTemplate dependencies
 * Open **Terminal**
-* Go to **easyTemplateApp** directory
 * Install [**Poetry**](https://python-poetry.org/docs/) (Python dependency manager)
   * osx / linux / bashonwindows
     ```
@@ -21,7 +20,8 @@ Template for easyScience applications
     ```
     (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
     ```
-* Create virtual environment and install **easyTemplate** dependences using **poetry**
+* Go to **easyTemplateApp** directory
+* Create virtual environment for **easyTemplate** and install its dependences using **poetry**
   ```
   poetry update
   ```
