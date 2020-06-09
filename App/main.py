@@ -1,9 +1,9 @@
 import os, sys
-
 from PySide2.QtCore import QUrl
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWidgets import QApplication
 
+import easyappgui
 from Logic.PyQmlProxy import PyQmlProxy
 
 
@@ -14,8 +14,9 @@ if __name__ == '__main__':
 
     # Define paths
     current_path = os.path.dirname(sys.argv[0])
-    qml_gui_path = QUrl.fromLocalFile(os.path.join(current_path, "Gui", "main.qml"))
-    qml_imports_path = str(QUrl.fromLocalFile(os.path.join(current_path)).toString())
+    main_qml_path = QUrl.fromLocalFile(os.path.join(current_path, "Gui", "main.qml"))
+    gui_path = str(QUrl.fromLocalFile(os.path.join(current_path)).toString())
+    easyAppGui_path = easyappgui.__path__[0]
 
     # Create a proxy object between python logic and QML GUI
     py_qml_proxy_obj = PyQmlProxy()
@@ -27,8 +28,9 @@ if __name__ == '__main__':
     # Create qml application engine
     engine = QQmlApplicationEngine()
     engine.rootContext().setContextProperty("_pyQmlProxyObj", py_qml_proxy_obj)
-    engine.addImportPath(qml_imports_path)
-    engine.load(qml_gui_path)
+    engine.addImportPath(easyAppGui_path)
+    engine.addImportPath(gui_path)
+    engine.load(main_qml_path)
 
     # Event loop
     if not engine.rootObjects():
