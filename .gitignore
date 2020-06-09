@@ -19,6 +19,8 @@ __pycache__
 
 # Poetry
 poetry.lock
+dist
+*.egg-info
 
 # Jupyter
 .ipynb_checkpoints
