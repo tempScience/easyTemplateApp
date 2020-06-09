@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "easytemplateapp"
+version = "0.1.0"
+description = "Template for easyScience applications"
+authors = ["Andrew Sazonov", "Simon Ward"]
+license = "LGPL-3.0-only"
+readme = 'README.md'
+
+[tool.poetry.dependencies]
+python = "3.7"
+easyapplogic = "^0.1.0"
+easyappgui = "^0.2.0"
+
+[tool.poetry.dev-dependencies]
+
+[[tool.poetry.source]]
+name = "easyscience"
+url = "https://easyscience.apptimity.com/"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
