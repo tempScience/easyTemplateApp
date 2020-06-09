@@ -31,5 +31,5 @@ Template for easyScience applications
 * Go to **easyTemplateApp** directory
 * Launch **easyTemplate** application using **poetry**
   ```
-  poetry run easyTemplate
+  poetry run easytemplate
   ```
