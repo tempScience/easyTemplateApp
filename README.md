@@ -1,4 +1,6 @@
 # easyTemplateApp
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp?ref=badge_shield)
+
 Template for easyScience applications
 
 ## Download easyTemplate
@@ -49,3 +51,7 @@ Template for easyScience applications
    ```
    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | POETRY_UNINSTALL=1 python
    ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp?ref=badge_large)
