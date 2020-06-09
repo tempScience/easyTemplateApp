@@ -21,7 +21,7 @@ Template for easyScience applications
     (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
     ```
 * Go to **easyTemplateApp** directory
-* Create virtual environment for **easyTemplate** and install its dependences using **poetry**
+* Create virtual environment for **easyTemplate** and install its dependences using **poetry** (configuration file: **pyproject.toml**)
   ```
   poetry update
   ```
@@ -33,7 +33,15 @@ Template for easyScience applications
   ```
   poetry run easytemplate
   ```
-  
+
+## Update easyTemplate dependencies
+* Open **Terminal**
+* Go to **easyTemplateApp** directory
+* Update **easyTemplate** using **poetry** (configuration file: **pyproject.toml**)
+  ```
+  poetry update
+  ```
+
 ## Delete easyTemplate
 * ...
 * Uninstall **Poetry**
