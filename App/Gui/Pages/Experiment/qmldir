@@ -1,0 +1,8 @@
+module Experiment
+
+MainAreaCifEdit 1.0 MainAreaCifEdit.qml
+MainAreaStructureView 1.0 MainAreaStructureView.qml
+MainAreaTableView 1.0 MainAreaTableView.qml
+
+SideBarAdvanced 1.0 SideBarAdvanced.qml
+SideBarBasic 1.0 SideBarBasic.qml

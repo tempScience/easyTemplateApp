@@ -1,0 +1,7 @@
+module Project
+
+MainAreaDescription 1.0 MainAreaDescription.qml
+MainAreaCifEdit 1.0 MainAreaCifEdit.qml
+
+SideBarAdvanced 1.0 SideBarAdvanced.qml
+SideBarBasic 1.0 SideBarBasic.qml
