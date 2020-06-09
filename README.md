@@ -33,3 +33,11 @@ Template for easyScience applications
   ```
   poetry run easytemplate
   ```
+  
+## Delete easyTemplate
+* ...
+* Uninstall **Poetry**
+   * osx / linux / bashonwindows
+   ```
+   curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | POETRY_UNINSTALL=1 python
+   ```
