@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "easytemplateapp"
+name = "easyTemplate"
 version = "0.1.0"
 description = "Template for easyScience applications"
 authors = ["Andrew Sazonov", "Simon Ward"]
@@ -8,10 +8,13 @@ readme = 'README.md'
 
 [tool.poetry.dependencies]
 python = "^3.7"
-easyapplogic = "^0.1"
-easyappgui = "^0.3"
+easyAppLogic = "^0.1"
+easyAppGui = "^0.3"
 
 [tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+easyTemplate = "easyTemplate.main:main"
 
 [[tool.poetry.source]]
 name = "easyscience"
