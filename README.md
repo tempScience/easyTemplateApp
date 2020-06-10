@@ -25,7 +25,7 @@ Template for easyScience applications
 * Go to **easyTemplateApp** directory
 * Create virtual environment for **easyTemplate** and install its dependences using **poetry** (configuration file: **pyproject.toml**)
   ```
-  poetry update
+  poetry install
   ```
   
 ## Launch easyTemplate application
