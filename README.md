@@ -25,7 +25,7 @@ Template for easyScience applications
 * Go to **easyTemplateApp** directory
 * Create virtual environment for **easyTemplate** and install its dependences using **poetry** (configuration file: **pyproject.toml**)
   ```
-  poetry install
+  poetry install --no-dev
   ```
   
 ## Launch easyTemplate application
@@ -41,7 +41,7 @@ Template for easyScience applications
 * Go to **easyTemplateApp** directory
 * Update **easyTemplate** using **poetry** (configuration file: **pyproject.toml**)
   ```
-  poetry update
+  poetry update --no-dev
   ```
 
 ## Delete easyTemplate
