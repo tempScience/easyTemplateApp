@@ -3,7 +3,7 @@ name = "easytemplate"
 version = "0.1.0"
 description = "Template for easyScience applications"
 authors = ["Andrew Sazonov", "Simon Ward"]
-license = "LGPL-3.0-only"
+license = "GPL-3.0-only"
 readme = 'README.md'
 
 [tool.poetry.dependencies]
