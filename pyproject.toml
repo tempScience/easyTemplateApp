@@ -15,10 +15,10 @@ python = "^3.7"
 #easyapplogic = "^0.1" # download from a custom repository given below
 #easyappgui = "^0.2" # download from a custom repository given below
 #easyappgui = {git = "https://github.com/tempscience/easyappgui.git", rev = "v0.2.0"} # download from github v0.2.0 release tag
-easyapplogic = {git = "https://github.com/tempscience/easyapplogic.git", rev = "develop"} # download from github develop branch
-easyappgui = {git = "https://github.com/tempscience/easyappgui.git", rev = "develop"} # download from github develop branch
-#easyapplogic = {path = "../easyAppLogic/"} # point to a local directory, changes will be reflected directly in environment
-#easyappgui = {path = "../easyAppGui/"} # point to a local directory, changes will be reflected directly in environment
+#easyapplogic = {git = "https://github.com/tempscience/easyapplogic.git", rev = "develop"} # download from github develop branch
+#easyappgui = {git = "https://github.com/tempscience/easyappgui.git", rev = "develop"} # download from github develop branch
+easyapplogic = {path = "../easyAppLogic/"} # point to a local directory, changes will be reflected directly in environment
+easyappgui = {path = "../easyAppGui/"} # point to a local directory, changes will be reflected directly in environment
 
 [tool.poetry.dev-dependencies]
 
