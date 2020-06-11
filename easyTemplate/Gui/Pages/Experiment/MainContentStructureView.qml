@@ -7,7 +7,7 @@ import easyAppGui.Components 1.0 as EaComponents
 EaComponents.SideBarColumn {
 
     EaElements.Label {
-        text: "Project SideBar Advanced"
+        text: "Experiment MainArea StructureView"
     }
 
 }

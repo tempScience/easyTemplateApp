@@ -1,9 +1,12 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.13
 
-Column {
+import easyAppGui.Elements 1.0 as EaElements
+import easyAppGui.Components 1.0 as EaComponents
 
-    Label {
+EaComponents.SideBarColumn {
+
+    EaElements.Label {
         text: "Project SideBar Basic"
     }
 

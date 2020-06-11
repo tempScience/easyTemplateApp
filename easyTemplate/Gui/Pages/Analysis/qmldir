@@ -1,7 +1,7 @@
 module Analysis
 
-MainAreaStructureView 1.0 MainAreaStructureView.qml
-MainAreaCifEdit 1.0 MainAreaCifEdit.qml
+MainContentStructureView 1.0 MainContentStructureView.qml
+MainContentCifEdit 1.0 MainContentCifEdit.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml
 SideBarBasic 1.0 SideBarBasic.qml

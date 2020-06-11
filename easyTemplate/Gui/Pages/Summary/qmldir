@@ -1,6 +1,6 @@
 module Summary
 
-MainAreaReport 1.0 MainAreaReport.qml
+MainContentReport 1.0 MainContentReport.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml
 SideBarBasic 1.0 SideBarBasic.qml

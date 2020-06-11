@@ -1,14 +1,14 @@
 import QmlProject 1.1
 
 Project {
-    mainFile: "App/Gui/main.qml"
+    mainFile: "easytemplate/Gui/main.qml"
 
     // List of module and plugin directories passed to QML runtime
-    importPaths: ["App", "/Users/andrewsazonov/Library/Caches/pypoetry/virtualenvs/easytemplateapp-BMq6RAfs-py3.7/lib/python3.7/site-packages/easyappgui"]
+    importPaths: ["easytemplate", "../easyAppGui/easyappgui"]
 
     // Include .qml files from specified directory and its subdirectories
     QmlFiles {
-        directory: "App"
+        directory: "easytemplate"
     }
 
     // Include Module Definition Files (qmldir), as well as .ts and .qrc

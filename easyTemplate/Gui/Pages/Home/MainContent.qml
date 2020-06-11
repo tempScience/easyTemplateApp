@@ -4,10 +4,11 @@ import QtQuick.Controls 2.13
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
-EaComponents.SideBarColumn {
+Item {
 
     EaElements.Label {
-        text: "Project SideBar Advanced"
+        anchors.centerIn: parent
+        text: "Home MainContent"
     }
 
 }

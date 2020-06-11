@@ -58,36 +58,42 @@ EaComponents.ApplicationWindow {
     appBarCentralTabs: [
         // Home tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "home"
             text: qsTr("Home")
             ToolTip.text: qsTr("Home page")
         },
         // Project tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "archive"
             text: qsTr("Project")
             ToolTip.text: qsTr("Project description page")
         },
         // Sample tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "gem"
             text: qsTr("Sample")
             ToolTip.text: qsTr("Sample model description page")
         },
         // Experiment tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "microscope"
             text: qsTr("Experiment")
             ToolTip.text: qsTr("Experimental settings and data page")
         },
         // Analysis tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "calculator"
             text: qsTr("Analysis")
             ToolTip.text: qsTr("Simulation and fitting page")
         },
         // Summary tab
         EaElements.TabButton {
+            height: EaStyle.Sizes.appBarHeight
             fontIcon: "clipboard-list"
             text: qsTr("Summary")
             ToolTip.text: qsTr("Summary of the work done")
@@ -101,10 +107,9 @@ EaComponents.ApplicationWindow {
     // Pages for the tab buttons described above
     contentArea: [
         // Home page
-        EaComponents.Page {
-        },
+        EwHomePage.MainContent {},
         // Project page
-        EaComponents.Page {
+        EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
@@ -116,8 +121,8 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwProjectPage.MainAreaDescription {},
-                    EwProjectPage.MainAreaCifEdit {}
+                    EwProjectPage.MainContentDescription {},
+                    EwProjectPage.MainContentCifEdit {}
                 ]
             }
 
@@ -127,7 +132,7 @@ EaComponents.ApplicationWindow {
             }
         },
         // Sample page
-        EaComponents.Page {
+        EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
@@ -139,8 +144,8 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwSamplePage.MainAreaStructureView {},
-                    EwSamplePage.MainAreaCifEdit {}
+                    EwSamplePage.MainContentStructureView {},
+                    EwSamplePage.MainContentCifEdit {}
                 ]
             }
 
@@ -150,7 +155,7 @@ EaComponents.ApplicationWindow {
             }
         },
         // Experiment page
-        EaComponents.Page {
+        EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
@@ -165,9 +170,9 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwExperimentPage.MainAreaStructureView {},
-                    EwExperimentPage.MainAreaTableView {},
-                    EwExperimentPage.MainAreaCifEdit {}
+                    EwExperimentPage.MainContentStructureView {},
+                    EwExperimentPage.MainContentTableView {},
+                    EwExperimentPage.MainContentCifEdit {}
                 ]
             }
 
@@ -177,7 +182,7 @@ EaComponents.ApplicationWindow {
             }
         },
         // Analysis page
-        EaComponents.Page {
+        EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
@@ -189,8 +194,8 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwAnalysisPage.MainAreaStructureView {},
-                    EwAnalysisPage.MainAreaCifEdit {}
+                    EwAnalysisPage.MainContentStructureView {},
+                    EwAnalysisPage.MainContentCifEdit {}
                 ]
             }
 
@@ -200,7 +205,7 @@ EaComponents.ApplicationWindow {
             }
         },
         // Summary page
-        EaComponents.Page {
+        EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
@@ -209,7 +214,7 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwSummaryPage.MainAreaReport {}
+                    EwSummaryPage.MainContentReport {}
                 ]
             }
 
@@ -224,6 +229,8 @@ EaComponents.ApplicationWindow {
     // STATUS BAR
     /////////////
 
-    ///statusBar: EwComponents.StatusBar {}
+    statusBar: EaElements.StatusBar {
+        text: "Status bar"
+    }
 
 }

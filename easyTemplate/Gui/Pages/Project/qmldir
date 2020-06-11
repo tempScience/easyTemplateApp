@@ -1,7 +1,7 @@
 module Project
 
-MainAreaCifEdit 1.0 MainAreaCifEdit.qml
-MainAreaDescription 1.0 MainAreaDescription.qml
+MainContentCifEdit 1.0 MainContentCifEdit.qml
+MainContentDescription 1.0 MainContentDescription.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml
 SideBarBasic 1.0 SideBarBasic.qml
