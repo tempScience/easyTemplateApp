@@ -3,8 +3,8 @@ from PySide2.QtCore import QUrl
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWidgets import QApplication
 
-import easyappgui
-from easytemplate.Logic.PyQmlProxy import PyQmlProxy
+import easyAppGui
+from easyTemplate.Logic.PyQmlProxy import PyQmlProxy
 #from Logic.PyQmlProxy import PyQmlProxy
 
 
@@ -13,7 +13,7 @@ def main():
     current_path = os.path.dirname(os.path.abspath(__file__))
     main_qml_path = QUrl.fromLocalFile(os.path.join(current_path, "Gui", "main.qml"))
     gui_path = str(QUrl.fromLocalFile(os.path.join(current_path)).toString())
-    easyAppGui_path = easyappgui.__path__[0]
+    easyAppGui_path = easyAppGui.__path__[0]
     print("current_path", current_path)
     print("main_qml_path", main_qml_path)
     print("gui_path", gui_path)
