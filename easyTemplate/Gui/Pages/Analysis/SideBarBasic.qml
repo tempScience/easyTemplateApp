@@ -6,8 +6,13 @@ import easyAppGui.Components 1.0 as EaComponents
 
 EaComponents.SideBarColumn {
 
-    EaElements.Label {
-        text: "Analysis SideBar Basic"
-    }
+    EaElements.SideBarButton {
+        fontIcon: "play-circle"
+        text: "Start fitting"
+        ToolTip.text: "Click to start fitting"
 
+        onClicked: {
+            print("Start fitting button clicked")
+        }
+    }
 }

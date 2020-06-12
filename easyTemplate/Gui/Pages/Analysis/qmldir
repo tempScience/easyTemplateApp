@@ -1,6 +1,6 @@
 module Analysis
 
-MainContentStructureView 1.0 MainContentStructureView.qml
+MainContentFitting 1.0 MainContentFitting.qml
 MainContentCifEdit 1.0 MainContentCifEdit.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml

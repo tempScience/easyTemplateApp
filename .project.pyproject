@@ -1,28 +1,23 @@
 {
 "files": [
-    "easytemplate/main.py",
+    "easyTemplate/main.py",
 
-    "easytemplate/Logic/ProjectSentinel.py",
-    "easytemplate/Logic/PyQmlProxy.py",
-    "easytemplate/Logic/QtInterface.py",
+    "easyTemplate/Logic/ProjectSentinel.py",
+    "easyTemplate/Logic/PyQmlProxy.py",
+    "easyTemplate/Logic/QtInterface.py",
 
-    "easytemplate/Logic/DisplayModels/AtomAdpsModel.py",
-    "easytemplate/Logic/DisplayModels/AtomMspsModel.py",
-    "easytemplate/Logic/DisplayModels/AtomSitesModel.py",
-    "easytemplate/Logic/DisplayModels/BaseModel.py",
-    "easytemplate/Logic/DisplayModels/BraggPeaksModel.py",
-    "easytemplate/Logic/DisplayModels/CalculatedDataModel.py",
-    "easytemplate/Logic/DisplayModels/CellBoxModel.py",
-    "easytemplate/Logic/DisplayModels/CellParametersModel.py",
-    "easytemplate/Logic/DisplayModels/FileStructureModel.py",
-    "easytemplate/Logic/DisplayModels/FitablesModel.py",
-    "easytemplate/Logic/DisplayModels/MeasuredDataModel.py",
-    "easytemplate/Logic/DisplayModels/ProjectModel.py",
-    "easytemplate/Logic/DisplayModels/StatusModel.py",
-
-    "easytemplate/Gui/Components/ApplicationWindow.qml",
-
-    "easytemplate/Gui/Globals/Constants.qml",
-    "easytemplate/Gui/Globals/Variables.qml"
+    "easyTemplate/Logic/DisplayModels/AtomAdpsModel.py",
+    "easyTemplate/Logic/DisplayModels/AtomMspsModel.py",
+    "easyTemplate/Logic/DisplayModels/AtomSitesModel.py",
+    "easyTemplate/Logic/DisplayModels/BaseModel.py",
+    "easyTemplate/Logic/DisplayModels/BraggPeaksModel.py",
+    "easyTemplate/Logic/DisplayModels/CalculatedDataModel.py",
+    "easyTemplate/Logic/DisplayModels/CellBoxModel.py",
+    "easyTemplate/Logic/DisplayModels/CellParametersModel.py",
+    "easyTemplate/Logic/DisplayModels/FileStructureModel.py",
+    "easyTemplate/Logic/DisplayModels/FitablesModel.py",
+    "easyTemplate/Logic/DisplayModels/MeasuredDataModel.py",
+    "easyTemplate/Logic/DisplayModels/ProjectModel.py",
+    "easyTemplate/Logic/DisplayModels/StatusModel.py"
     ]
 }

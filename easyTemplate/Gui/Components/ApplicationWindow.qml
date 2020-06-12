@@ -186,7 +186,7 @@ EaComponents.ApplicationWindow {
             mainContent: EaComponents.MainContent {
                 tabs: [
                     EaElements.TabButton {
-                        text: qsTr("Analysis")
+                        text: qsTr("Fitting")
                     },
                     EaElements.TabButton {
                         text: qsTr("calculations.cif")
@@ -194,7 +194,7 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwAnalysisPage.MainContentStructureView {},
+                    EwAnalysisPage.MainContentFitting {},
                     EwAnalysisPage.MainContentCifEdit {}
                 ]
             }
