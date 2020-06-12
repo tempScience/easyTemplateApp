@@ -22,6 +22,9 @@ poetry.lock
 dist
 *.egg-info
 
+# PyInstaller
+build
+
 # Jupyter
 .ipynb_checkpoints
 
