@@ -19,33 +19,33 @@ jobs:
     - uses: actions/checkout@v2
     
     # Sets up a Python environment
-    - uses: actions/setup-python@v2
-      with:
-          python-version: 3.7
+    #- uses: actions/setup-python@v2
+    #  with:
+    #      python-version: 3.7
 
     # Sets up a Poetry
-    - uses: Gr1N/setup-poetry@v2
+    #- uses: Gr1N/setup-poetry@v2
 
     # Runs a set of commands using the runners shell
-    - name: Shows versions
-      run: |
-        python --version
-        pip --version
-        poetry --version
+    #- name: Shows versions
+    #  run: |
+    #    python --version
+    #    pip --version
+    #    poetry --version
 
     # Runs a single command using the runners shell
-    - name: Creates venv and install dependences
-      run: poetry update
+    #- name: Creates venv and install dependences
+    #  run: poetry update
 
     # Runs a set of commands using the runners shell
-    - name: Sets up PyInstaller
-      run: |
-        poetry add macholib
-        poetry add pyinstaller
+    #- name: Sets up PyInstaller
+    #  run: |
+    #    poetry add macholib
+    #    poetry add pyinstaller
 
     # Runs a single command using the runners shell
-    - name: Freezes python app
-      run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
+    #- name: Freezes python app
+    #  run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
     
     # Creates release zip archive
     #- uses: montudor/action-zip@v0.1.0
@@ -69,5 +69,6 @@ jobs:
         draft: true
         prerelease: true
         allowUpdates: true
-        artifact: "pyproject.toml" #easyTemplate.zip
+        commit: commit
+        artifacts: "pyproject.toml" #easyTemplate.zip
         token: ${{ secrets.GITHUB_TOKEN }}      
