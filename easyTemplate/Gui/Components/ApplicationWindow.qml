@@ -169,7 +169,7 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    ExExperimentPage.MainContentStructureView {},
+                    ExExperimentPage.MainContentPlotView {},
                     ExExperimentPage.MainContentTableView {},
                     ExExperimentPage.MainContentCifEdit {}
                 ]

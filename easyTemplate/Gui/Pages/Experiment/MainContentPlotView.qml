@@ -41,15 +41,6 @@ Rectangle {
             Component.onCompleted: ExGlobals.Variables.proxy.addMeasuredSeriesRef(measuredSeries)
         }
 
-        EaCharts.LineSeries {
-            id: calculatedSeries
-
-            axisX: axisX
-            axisY: axisY
-
-            Component.onCompleted: ExGlobals.Variables.proxy.setCalculatedSeriesRef(calculatedSeries)
-        }
-
     }
 
 }

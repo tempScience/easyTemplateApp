@@ -1,8 +1,8 @@
 module Experiment
 
-MainContentCifEdit 1.0 MainContentCifEdit.qml
-MainContentStructureView 1.0 MainContentStructureView.qml
+MainContentPlotView 1.0 MainContentPlotView.qml
 MainContentTableView 1.0 MainContentTableView.qml
+MainContentCifEdit 1.0 MainContentCifEdit.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml
 SideBarBasic 1.0 SideBarBasic.qml

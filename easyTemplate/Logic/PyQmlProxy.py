@@ -23,8 +23,8 @@ class PyQmlProxy(QObject):
         self.appNameChanged.emit()
 
     @Slot(QtCharts.QXYSeries)
-    def setMeasuredSeriesRef(self, series):
-        self._measured_data_model.setSeriesRef(series)
+    def addMeasuredSeriesRef(self, series):
+        self._measured_data_model.addSeriesRef(series)
 
     @Slot(QtCharts.QXYSeries)
     def setCalculatedSeriesRef(self, series):
