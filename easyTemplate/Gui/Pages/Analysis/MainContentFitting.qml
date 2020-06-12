@@ -14,12 +14,20 @@ Rectangle {
 
         EaCharts.ValueAxis {
             id: axisX
+
             titleText: "X axis"
+
+            min: 0
+            max: 20
         }
 
         EaCharts.ValueAxis {
             id: axisY
+
             titleText: "Y axis"
+
+            min: 0
+            max: 2
         }
 
         EaCharts.ScatterSeries {
@@ -28,22 +36,7 @@ Rectangle {
             axisX: axisX
             axisY: axisY
 
-            XYPoint {
-                x: 0
-                y: 0
-            }
-            XYPoint {
-                x: 1.1
-                y: 2.1
-            }
-            XYPoint {
-                x: 1.9
-                y: 3.3
-            }
-            XYPoint {
-                x: 2.1
-                y: 2.1
-            }
+            Component.onCompleted: _pyQmlProxyObj._measuredData.setMeasuredSeries(measuredSeries)
         }
 
         EaCharts.LineSeries {
@@ -52,22 +45,7 @@ Rectangle {
             axisX: axisX
             axisY: axisY
 
-            XYPoint {
-                x: 0
-                y: 0
-            }
-            XYPoint {
-                x: 1.1
-                y: 2.1
-            }
-            XYPoint {
-                x: 1.9
-                y: 3.3
-            }
-            XYPoint {
-                x: 2.1
-                y: 2.1
-            }
+            Component.onCompleted: _pyQmlProxyObj._calculatedData.setCalculatedSeries(calculatedSeries)
         }
 
     }

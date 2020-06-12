@@ -13,6 +13,7 @@ EaComponents.SideBarColumn {
 
         onClicked: {
             print("Start fitting button clicked")
+            _pyQmlProxyObj.refine()
         }
     }
 }
