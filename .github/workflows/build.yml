@@ -23,12 +23,12 @@ jobs:
       uses: rlespinasse/github-slug-action@v2.x
 
     # Sets up a Python environment
-    #- uses: actions/setup-python@v2
-    #  with:
-    #      python-version: 3.7
+    - uses: actions/setup-python@v2
+      with:
+          python-version: 3.7
 
     # Sets up a Poetry
-    #- uses: Gr1N/setup-poetry@v2
+    - uses: Gr1N/setup-poetry@v2
 
     # Runs a set of commands using the runners shell
     - name: Print variables/versions
@@ -38,23 +38,23 @@ jobs:
         poetry --version
 
     # Runs a single command using the runners shell
-    #- name: Creates venv and install dependences
-    #  run: poetry update
+    - name: Creates venv and install dependences
+      run: poetry update
 
     # Runs a set of commands using the runners shell
-    #- name: Sets up PyInstaller
-    #  run: |
-    #    poetry add macholib
-    #    poetry add pyinstaller
+    - name: Sets up PyInstaller
+      run: |
+        poetry add macholib
+        poetry add pyinstaller
 
     # Runs a single command using the runners shell
-    #- name: Freezes python app
-    #  run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
+    - name: Freezes python app
+      run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
     
     # Creates release zip archive
-    #- uses: montudor/action-zip@v0.1.0
-    #  with:
-    #    args: zip -qq -r ./easyTemplate.zip ./dist/easyTemplate.app
+    - uses: montudor/action-zip@v0.1.0
+      with:
+        args: zip -qq -r ./easyTemplate.zip ./dist/easyTemplate.app
 
     # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
@@ -67,5 +67,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}      
         commit: ${{ env.GITHUB_REF_SLUG }}
         tag: ${{ env.GITHUB_REF_SLUG }}
-        artifacts: "pyproject.toml" #easyTemplate.zip
-
+        artifacts: "easyTemplate.zip"
