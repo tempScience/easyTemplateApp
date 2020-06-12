@@ -84,9 +84,14 @@ jobs:
     #  with:
     #    args: "pyproject.toml" #easyTemplate.zip
 
-    - name: Branch name
-      run: echo running on branch ${GITHUB_REF##*/}
-      
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v2.x
+
+    - name: Print slug/short variables
+      run: |
+        echo "Slug variables"
+        echo " - ${{ env.GITHUB_REF_SLUG }}"
+
     #
     #- name: Create Release
     #  id: create_release
