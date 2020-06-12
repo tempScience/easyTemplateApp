@@ -102,8 +102,7 @@ jobs:
         tag_name: ${{ env.GITHUB_REF_SLUG }}
         release_name: ${{ env.GITHUB_REF_SLUG }}
         body: |
-          Changes in this Release
-          - First Change
+          - New Change
           - Second Change
         draft: true
         prerelease: true
