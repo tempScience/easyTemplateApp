@@ -6,7 +6,6 @@
     "easyTemplate/Logic/PyQmlProxy.py",
     "easyTemplate/Logic/QtInterface.py",
 
-    "easyTemplate/Logic/DisplayModels/DataModels.py",
-    "easyTemplate/Logic/DisplayModels/BaseModel.py"
+    "easyTemplate/Logic/DisplayModels/DataModels.py"
     ]
 }

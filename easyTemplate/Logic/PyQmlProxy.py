@@ -5,6 +5,7 @@ from easyTemplate.Logic.DisplayModels.DataModels import MeasuredDataModel, Calcu
 
 
 class PyQmlProxy(QObject):
+
     appNameChanged = Signal()
 
     def __init__(self, parent=None):
@@ -12,6 +13,8 @@ class PyQmlProxy(QObject):
         self.appName = "easyTemplate"
         self._measured_data_model = MeasuredDataModel()
         self._calculated_data_model = CalculatedDataModel()
+
+    # App info
 
     @Property(str, notify=appNameChanged)
     def appName(self):
@@ -21,6 +24,8 @@ class PyQmlProxy(QObject):
     def setAppName(self, value: str):
         self._app_name = value
         self.appNameChanged.emit()
+
+    # Charts
 
     @Slot(QtCharts.QXYSeries)
     def addMeasuredSeriesRef(self, series):
