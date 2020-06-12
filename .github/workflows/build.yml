@@ -10,7 +10,7 @@ jobs:
   build:
     
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: macos-10.13
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,7 +60,7 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate.zip
+        dest: easyTemplate-macos-${{ env.RELEASE_VERSION }}.zip
 
     # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
