@@ -6,15 +6,14 @@ import easyAppGui.Globals 1.0 as EaGlobals
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
-import Gui.Pages.Home 1.0 as EwHomePage
-import Gui.Pages.Project 1.0 as EwProjectPage
-import Gui.Pages.Sample 1.0 as EwSamplePage
-import Gui.Pages.Experiment 1.0 as EwExperimentPage
-import Gui.Pages.Analysis 1.0 as EwAnalysisPage
-import Gui.Pages.Summary 1.0 as EwSummaryPage
+import Gui.Pages.Home 1.0 as ExHomePage
+import Gui.Pages.Project 1.0 as ExProjectPage
+import Gui.Pages.Sample 1.0 as ExSamplePage
+import Gui.Pages.Experiment 1.0 as ExExperimentPage
+import Gui.Pages.Analysis 1.0 as ExAnalysisPage
+import Gui.Pages.Summary 1.0 as ExSummaryPage
 
 EaComponents.ApplicationWindow {
-    id: window
 
     ///////////////////
     // APPLICATION BAR
@@ -107,7 +106,7 @@ EaComponents.ApplicationWindow {
     // Pages for the tab buttons described above
     contentArea: [
         // Home page
-        EwHomePage.MainContent {},
+        ExHomePage.MainContent {},
         // Project page
         EaComponents.ContentPage {
             mainContent: EaComponents.MainContent {
@@ -121,14 +120,14 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwProjectPage.MainContentDescription {},
-                    EwProjectPage.MainContentCifEdit {}
+                    ExProjectPage.MainContentDescription {},
+                    ExProjectPage.MainContentCifEdit {}
                 ]
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: EwProjectPage.SideBarBasic {}
-                advancedControls: EwProjectPage.SideBarAdvanced {}
+                basicControls: ExProjectPage.SideBarBasic {}
+                advancedControls: ExProjectPage.SideBarAdvanced {}
             }
         },
         // Sample page
@@ -144,14 +143,14 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwSamplePage.MainContentStructureView {},
-                    EwSamplePage.MainContentCifEdit {}
+                    ExSamplePage.MainContentStructureView {},
+                    ExSamplePage.MainContentCifEdit {}
                 ]
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: EwSamplePage.SideBarBasic {}
-                advancedControls: EwSamplePage.SideBarAdvanced {}
+                basicControls: ExSamplePage.SideBarBasic {}
+                advancedControls: ExSamplePage.SideBarAdvanced {}
             }
         },
         // Experiment page
@@ -170,15 +169,15 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwExperimentPage.MainContentStructureView {},
-                    EwExperimentPage.MainContentTableView {},
-                    EwExperimentPage.MainContentCifEdit {}
+                    ExExperimentPage.MainContentStructureView {},
+                    ExExperimentPage.MainContentTableView {},
+                    ExExperimentPage.MainContentCifEdit {}
                 ]
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: EwExperimentPage.SideBarBasic {}
-                advancedControls: EwExperimentPage.SideBarAdvanced {}
+                basicControls: ExExperimentPage.SideBarBasic {}
+                advancedControls: ExExperimentPage.SideBarAdvanced {}
             }
         },
         // Analysis page
@@ -194,14 +193,14 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwAnalysisPage.MainContentFitting {},
-                    EwAnalysisPage.MainContentCifEdit {}
+                    ExAnalysisPage.MainContentFitting {},
+                    ExAnalysisPage.MainContentCifEdit {}
                 ]
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: EwAnalysisPage.SideBarBasic {}
-                advancedControls: EwAnalysisPage.SideBarAdvanced {}
+                basicControls: ExAnalysisPage.SideBarBasic {}
+                advancedControls: ExAnalysisPage.SideBarAdvanced {}
             }
         },
         // Summary page
@@ -214,13 +213,13 @@ EaComponents.ApplicationWindow {
                 ]
 
                 items: [
-                    EwSummaryPage.MainContentReport {}
+                    ExSummaryPage.MainContentReport {}
                 ]
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: EwSummaryPage.SideBarBasic {}
-                advancedControls: EwSummaryPage.SideBarAdvanced {}
+                basicControls: ExSummaryPage.SideBarBasic {}
+                advancedControls: ExSummaryPage.SideBarAdvanced {}
             }
         }
     ]

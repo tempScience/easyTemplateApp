@@ -5,7 +5,6 @@ from PySide2.QtWidgets import QApplication
 
 import easyAppGui
 from easyTemplate.Logic.PyQmlProxy import PyQmlProxy
-#from Logic.PyQmlProxy import PyQmlProxy
 
 
 def main():
@@ -14,10 +13,10 @@ def main():
     main_qml_path = QUrl.fromLocalFile(os.path.join(current_path, "Gui", "main.qml"))
     gui_path = str(QUrl.fromLocalFile(os.path.join(current_path)).toString())
     easyAppGui_path = easyAppGui.__path__[0]
-    print("current_path", current_path)
-    print("main_qml_path", main_qml_path)
-    print("gui_path", gui_path)
-    print("easyAppGui_path", easyAppGui_path)
+    #print("current_path", current_path)
+    #print("main_qml_path", main_qml_path)
+    #print("gui_path", gui_path)
+    #print("easyAppGui_path", easyAppGui_path)
 
     # Create a proxy object between python logic and QML GUI
     py_qml_proxy_obj = PyQmlProxy()

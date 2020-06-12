@@ -6,18 +6,7 @@
     "easyTemplate/Logic/PyQmlProxy.py",
     "easyTemplate/Logic/QtInterface.py",
 
-    "easyTemplate/Logic/DisplayModels/AtomAdpsModel.py",
-    "easyTemplate/Logic/DisplayModels/AtomMspsModel.py",
-    "easyTemplate/Logic/DisplayModels/AtomSitesModel.py",
-    "easyTemplate/Logic/DisplayModels/BaseModel.py",
-    "easyTemplate/Logic/DisplayModels/BraggPeaksModel.py",
-    "easyTemplate/Logic/DisplayModels/CalculatedDataModel.py",
-    "easyTemplate/Logic/DisplayModels/CellBoxModel.py",
-    "easyTemplate/Logic/DisplayModels/CellParametersModel.py",
-    "easyTemplate/Logic/DisplayModels/FileStructureModel.py",
-    "easyTemplate/Logic/DisplayModels/FitablesModel.py",
-    "easyTemplate/Logic/DisplayModels/MeasuredDataModel.py",
-    "easyTemplate/Logic/DisplayModels/ProjectModel.py",
-    "easyTemplate/Logic/DisplayModels/StatusModel.py"
+    "easyTemplate/Logic/DisplayModels/DataModels.py",
+    "easyTemplate/Logic/DisplayModels/BaseModel.py"
     ]
 }

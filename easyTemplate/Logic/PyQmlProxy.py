@@ -1,7 +1,7 @@
 from PySide2.QtCore import QObject, Slot, Signal, Property
+from PySide2.QtCharts import QtCharts
 
-from easyTemplate.Logic.DisplayModels import MeasuredDataModel, CalculatedDataModel
-#from Logic.DisplayModels import *
+from easyTemplate.Logic.DisplayModels.DataModels import MeasuredDataModel, CalculatedDataModel
 
 
 class PyQmlProxy(QObject):
@@ -10,8 +10,8 @@ class PyQmlProxy(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.appName = "easyTemplate"
-        self._measured_data_model = MeasuredDataModel.MeasuredDataModel()
-        self._calculated_data_model = CalculatedDataModel.CalculatedDataModel()
+        self._measured_data_model = MeasuredDataModel()
+        self._calculated_data_model = CalculatedDataModel()
 
     @Property(str, notify=appNameChanged)
     def appName(self):
@@ -22,9 +22,19 @@ class PyQmlProxy(QObject):
         self._app_name = value
         self.appNameChanged.emit()
 
-    @Slot()
-    def refine(self):
-        print("Python implementation of refine")
+    @Slot(QtCharts.QXYSeries)
+    def setMeasuredSeriesRef(self, series):
+        self._measured_data_model.setSeriesRef(series)
 
-    _measuredData = Property('QVariant', lambda self: self._measured_data_model, constant=True)
-    _calculatedData = Property('QVariant', lambda self: self._calculated_data_model, constant=True)
+    @Slot(QtCharts.QXYSeries)
+    def setCalculatedSeriesRef(self, series):
+        self._calculated_data_model.setSeriesRef(series)
+
+    @Slot()
+    def generateMeasuredData(self):
+        self._measured_data_model.updateSeries()
+
+    @Slot()
+    def startFitting(self):
+        self._calculated_data_model.updateSeries()
+

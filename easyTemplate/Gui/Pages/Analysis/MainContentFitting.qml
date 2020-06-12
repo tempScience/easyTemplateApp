@@ -6,6 +6,8 @@ import easyAppGui.Style 1.0 as EaStyle
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Charts 1.0 as EaCharts
 
+import Gui.Globals 1.0 as ExGlobals
+
 Rectangle {
     color: EaStyle.Colors.mainContentBackground
 
@@ -27,7 +29,7 @@ Rectangle {
             titleText: "Y axis"
 
             min: 0
-            max: 2
+            max: 1
         }
 
         EaCharts.ScatterSeries {
@@ -36,7 +38,7 @@ Rectangle {
             axisX: axisX
             axisY: axisY
 
-            Component.onCompleted: _pyQmlProxyObj._measuredData.setMeasuredSeries(measuredSeries)
+            Component.onCompleted: ExGlobals.Variables.proxy.setMeasuredSeriesRef(measuredSeries)
         }
 
         EaCharts.LineSeries {
@@ -45,7 +47,7 @@ Rectangle {
             axisX: axisX
             axisY: axisY
 
-            Component.onCompleted: _pyQmlProxyObj._calculatedData.setCalculatedSeries(calculatedSeries)
+            Component.onCompleted: ExGlobals.Variables.proxy.setCalculatedSeriesRef(calculatedSeries)
         }
 
     }
