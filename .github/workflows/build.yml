@@ -18,6 +18,10 @@ jobs:
     # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
     - uses: actions/checkout@v2
     
+    # To get branch name: ${{ env.GITHUB_REF_SLUG }}
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v2.x
+
     # Sets up a Python environment
     #- uses: actions/setup-python@v2
     #  with:
@@ -27,11 +31,11 @@ jobs:
     #- uses: Gr1N/setup-poetry@v2
 
     # Runs a set of commands using the runners shell
-    #- name: Shows versions
-    #  run: |
-    #    python --version
-    #    pip --version
-    #    poetry --version
+    - name: Print variables/versions
+      run: |
+        python --version
+        pip --version
+        poetry --version
 
     # Runs a single command using the runners shell
     #- name: Creates venv and install dependences
@@ -51,46 +55,6 @@ jobs:
     #- uses: montudor/action-zip@v0.1.0
     #  with:
     #    args: zip -qq -r ./easyTemplate.zip ./dist/easyTemplate.app
-    
-    # Creates GitHub Releases 
-    #- name: Upload artifacts to GitHub releases
-    #  uses: softprops/action-gh-release@v1
-    #  with:
-    #    draft: true
-    #    prerelease: true
-    #    files: pyproject.toml #easyTemplate.zip
-    #  env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-
-    # Creates GitHub Releases 
-    #- name: Upload artifacts to GitHub releases
-    #  uses: ncipollo/release-action@v1
-    #  with:
-    #    draft: true
-    #    prerelease: true
-    #    allowUpdates: true
-    #    commit: commit
-    #    tag: tag
-    #    artifacts: "pyproject.toml" #easyTemplate.zip
-    #    token: ${{ secrets.GITHUB_TOKEN }}      
-
-    # Creates GitHub Releases 
-    #- name: Upload artifacts to GitHub releases
-    #  uses: docker://antonyurchenko/git-release:latest
-    #  env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #    DRAFT_RELEASE: "true"
-    #    PRE_RELEASE: "true"
-    #  with:
-    #    args: "pyproject.toml" #easyTemplate.zip
-
-    - name: Inject slug/short variables
-      uses: rlespinasse/github-slug-action@v2.x
-
-    - name: Print slug/short variables
-      run: |
-        echo "Slug variables"
-        echo " - ${{ env.GITHUB_REF_SLUG }}"
 
     # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
@@ -100,22 +64,8 @@ jobs:
         prerelease: true
         allowUpdates: true
         replacesArtifacts: true
+        token: ${{ secrets.GITHUB_TOKEN }}      
         commit: ${{ env.GITHUB_REF_SLUG }}
         tag: ${{ env.GITHUB_REF_SLUG }}
         artifacts: "pyproject.toml" #easyTemplate.zip
-        token: ${{ secrets.GITHUB_TOKEN }}      
 
-    
-    #- name: Create Release
-    #  id: create_release
-    #  uses: actions/create-release@v1
-    #  env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-    #  with:
-    #    tag_name: ${{ env.GITHUB_REF_SLUG }}
-    #    release_name: ${{ env.GITHUB_REF_SLUG }}
-    #    body: |
-    #      - New Change
-    #      - Second Change
-    #    draft: true
-    #    prerelease: true
