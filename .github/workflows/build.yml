@@ -75,11 +75,27 @@ jobs:
     #    token: ${{ secrets.GITHUB_TOKEN }}      
 
     # Creates GitHub Releases 
-    - name: Upload artifacts to GitHub releases
-      uses: docker://antonyurchenko/git-release:latest
+    #- name: Upload artifacts to GitHub releases
+    #  uses: docker://antonyurchenko/git-release:latest
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #    DRAFT_RELEASE: "true"
+    #    PRE_RELEASE: "true"
+    #  with:
+    #    args: "pyproject.toml" #easyTemplate.zip
+
+    #
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DRAFT_RELEASE: "true"
-        PRE_RELEASE: "true"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        args: "pyproject.toml" #easyTemplate.zip
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          Changes in this Release
+          - First Change
+          - Second Change
+        draft: true
+        prerelease: true
