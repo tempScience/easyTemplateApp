@@ -63,13 +63,23 @@ jobs:
     #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
     # Creates GitHub Releases 
+    #- name: Upload artifacts to GitHub releases
+    #  uses: ncipollo/release-action@v1
+    #  with:
+    #    draft: true
+    #    prerelease: true
+    #    allowUpdates: true
+    #    commit: commit
+    #    tag: tag
+    #    artifacts: "pyproject.toml" #easyTemplate.zip
+    #    token: ${{ secrets.GITHUB_TOKEN }}      
+
+    # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
-      uses: ncipollo/release-action@v1
+      uses: docker://antonyurchenko/git-release:latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DRAFT_RELEASE: "true"
+        PRE_RELEASE: "true"
       with:
-        draft: true
-        prerelease: true
-        allowUpdates: true
-        commit: commit
-        tag: tag
-        artifacts: "pyproject.toml" #easyTemplate.zip
-        token: ${{ secrets.GITHUB_TOKEN }}      
+        args: "pyproject.toml" #easyTemplate.zip
