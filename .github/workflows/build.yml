@@ -56,9 +56,11 @@ jobs:
       run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
     
     # Creates release zip archive
-    - uses: montudor/action-zip@v0.1.0
+    - uses: papeloto/action-zip@v1
       with:
-        args: zip -qq -r ./easyTemplate.zip ./dist/easyTemplate.app
+        files: dist/easyTemplate.app
+        recursive: true
+        dest: easyTemplate.zip
 
     # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
