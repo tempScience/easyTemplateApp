@@ -70,5 +70,6 @@ jobs:
         prerelease: true
         allowUpdates: true
         commit: commit
+        tag: tag
         artifacts: "pyproject.toml" #easyTemplate.zip
         token: ${{ secrets.GITHUB_TOKEN }}      
