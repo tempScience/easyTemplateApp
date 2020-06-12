@@ -77,4 +77,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}      
         commit: ${{ env.RELEASE_VERSION }}
         tag: ${{ env.RELEASE_VERSION }}
-        artifacts: easyTemplate-macos-${{ env.RELEASE_VERSION }}.zip
+        artifacts: "easyTemplate-*.zip"
