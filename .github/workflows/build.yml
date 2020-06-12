@@ -46,13 +46,28 @@ jobs:
     # Runs a single command using the runners shell
     - name: Freezes python app
       run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
-      
+    
+    # Creates release zip archive
+    #- uses: montudor/action-zip@v0.1.0
+    #  with:
+    #    args: zip -qq -r ./easyTemplate.zip ./dist/easyTemplate.app
+    
+    # Creates GitHub Releases 
+    #- name: Upload artifacts to GitHub releases
+    #  uses: softprops/action-gh-release@v1
+    #  with:
+    #    draft: true
+    #    prerelease: true
+    #    files: pyproject.toml #easyTemplate.zip
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+
     # Creates GitHub Releases 
     - name: Upload artifacts to GitHub releases
-      uses: softprops/action-gh-release@v1
+      uses: ncipollo/release-action@v1
       with:
         draft: true
         prerelease: true
-        files: pyproject.toml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+        allowUpdates: true
+        artifact: "pyproject.toml" #easyTemplate.zip
+        token: ${{ secrets.GITHUB_TOKEN }}      
