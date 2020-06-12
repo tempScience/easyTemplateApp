@@ -1,11 +1,11 @@
 from random import random
 
-from PySide2.QtCore import QObject, QPointF
+from PySide2.QtCore import QPointF
 from PySide2.QtCharts import QtCharts
 
-class MeasuredDataModel(QObject):
+
+class MeasuredDataModel():
     def __init__(self, parent=None):
-        super().__init__(parent)
         self._seriesRefs = []
 
     def updateSeries(self):
@@ -18,6 +18,7 @@ class MeasuredDataModel(QObject):
         series = [QPointF(x, random()) for x in range(21)]
 
         for seriesRef in self._seriesRefs:
+            print("seriesRef", seriesRef)
             seriesRef.replace(series)
 
     def addSeriesRef(self, seriesRef):
@@ -27,9 +28,8 @@ class MeasuredDataModel(QObject):
         self._seriesRefs.append(seriesRef)
 
 
-class CalculatedDataModel(QObject):
+class CalculatedDataModel():
     def __init__(self, parent=None):
-        super().__init__(parent)
         self._seriesRef = None
 
     def updateSeries(self):
