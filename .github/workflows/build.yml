@@ -34,5 +34,25 @@ jobs:
         poetry --version
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script
+    - name: Creates venv and install dependences
       run: poetry update
+
+    # Runs a set of commands using the runners shell
+    - name: Sets up PyInstaller
+      run: |
+        poetry add macholib
+        poetry add pyinstaller
+
+    # Runs a single command using the runners shell
+    - name: Freezes python app
+      run: poetry run pyinstaller easyTemplate/main.py --name easyTemplate --noconfirm --clean --windowed --onedir
+      
+    # Creates GitHub Releases 
+    - name: Upload artifacts to GitHub releases
+      uses: softprops/action-gh-release@v1
+      with:
+        draft: true
+        prerelease: true
+        files: pyproject.toml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
