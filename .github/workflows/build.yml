@@ -41,6 +41,7 @@ jobs:
     - name: Print environment variables
       run: |
         echo ${BRANCH_NAME}
+        echo ${{ BRANCH_NAME }}
         echo $BRANCH_NAME
         echo ${{ env.BRANCH_NAME }}
         echo ${{matrix.POETRY_VENV_PATH}}
@@ -109,7 +110,7 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-${{ runner.os }}-${BRANCH_NAME}.zip
+        dest: easyTemplate-${{ runner.os }}-${{ BRANCH_NAME }}.zip
 
     # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
@@ -120,6 +121,6 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: ${BRANCH_NAME} #${{ env.RELEASE_VERSION }}
-        tag: ${BRANCH_NAME} #${{ env.RELEASE_VERSION }}
+        commit: ${{ BRANCH_NAME }} #${{ env.RELEASE_VERSION }}
+        tag: ${{ BRANCH_NAME }} #${{ env.RELEASE_VERSION }}
         artifacts: "easyTemplate-*.zip"
