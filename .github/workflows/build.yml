@@ -40,7 +40,7 @@ jobs:
 
     - name: Declare some variables
       id: vars
-        run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
+      run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
     - name: Print environment variables
       run: |
