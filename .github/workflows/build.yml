@@ -5,26 +5,37 @@ on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  
+
   # This workflow contains a single job called "build"
   build:
-    
+
+    # Build matrix for different platforms
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
     # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
     - uses: actions/checkout@v2
-    
+
     # Sets env variables
     - name: Set env variables
       run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
-    #- name: Test
-    #  run: |
-    #    echo $RELEASE_VERSION
-    #    echo ${{ env.RELEASE_VERSION }}
+
+    # Print variables
+    - name: Print variables
+      run: |
+        echo $RELEASE_VERSION
+        echo ${{ env.RELEASE_VERSION }}
+        echo ${{ matrix.os }}
+        echo ${{ runner.os }}
+        echo $RUNNER_OS
+        echo ${{ env.RUNNER_OS }}
 
     # Sets up a Python environment
     - uses: actions/setup-python@v2
@@ -33,13 +44,6 @@ jobs:
 
     # Sets up a Poetry
     - uses: Gr1N/setup-poetry@v2
-
-    # Runs a set of commands using the runners shell
-    #- name: Print variables/versions
-    #  run: |
-    #    python --version
-    #    pip --version
-    #    poetry --version
 
     # Runs a single command using the runners shell
     - name: Creates venv and install dependences
@@ -64,9 +68,9 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-macos-${{ env.RELEASE_VERSION }}.zip
+        dest: easyTemplate-${{ env.RUNNER_OS }}-${{ env.RELEASE_VERSION }}.zip
 
-    # Creates GitHub Releases 
+    # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
       uses: ncipollo/release-action@v1
       with:
@@ -74,7 +78,7 @@ jobs:
         prerelease: true
         allowUpdates: true
         replacesArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}      
+        token: ${{ secrets.GITHUB_TOKEN }}
         commit: ${{ env.RELEASE_VERSION }}
         tag: ${{ env.RELEASE_VERSION }}
         artifacts: "easyTemplate-*.zip"
