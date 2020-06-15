@@ -41,7 +41,7 @@ jobs:
     - name: Print environment variables
       run: |
         echo ${BRANCH_NAME}
-        echo ${{ BRANCH_NAME }}
+        echo ${GITHUB_REF#refs/*/}
         echo $BRANCH_NAME
         echo ${{ env.BRANCH_NAME }}
         echo ${{matrix.POETRY_VENV_PATH}}
