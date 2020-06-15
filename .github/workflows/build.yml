@@ -47,7 +47,7 @@ jobs:
 
 
     - name: Set selected color
-      run: echo '::set-env name=SHORT_GITHUB_REF::${ GITHUB_REF#refs/*/ }'
+      run: echo '::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}'
 
     #- uses: actions/github-script@v2
     #  #id: set-result
@@ -74,13 +74,13 @@ jobs:
       with:
           python-version: 3.7
 
-    - name: Sets some env variables
-      shell: python
-      run: |
-        import os
-        os.environ['SHORT_GITHUB_REF'] = os.environ['GITHUB_REF'].split('/')[-1]
-        print('GITHUB_REF:', os.environ['GITHUB_REF'])
-        print('SHORT_GITHUB_REF:', os.environ['SHORT_GITHUB_REF'])
+    #- name: Sets some env variables
+    #  shell: python
+    #  run: |
+    #    import os
+    #    os.environ['SHORT_GITHUB_REF'] = os.environ['GITHUB_REF'].split('/')[-1]
+    #    print('GITHUB_REF:', os.environ['GITHUB_REF'])
+    #    print('SHORT_GITHUB_REF:', os.environ['SHORT_GITHUB_REF'])
 
     - name: Print environment variables
       run: |
