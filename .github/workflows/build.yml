@@ -17,8 +17,8 @@ jobs:
       matrix:
     #    os: [macos-latest, windows-latest, ubuntu-latest]
         os: [macos-latest, ubuntu-latest, windows-latest]
-        #env:
-        #  RELEASE_VERSION: develop
+        env:
+          SHORT_GITHUB_REF: ${GITHUB_REF#refs/*/}
         include:
         - os: macos-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs #~/Library/Caches/pypoetry/virtualenvs
@@ -38,17 +38,15 @@ jobs:
     #- uses: franzdiebold/github-env-vars-action@v1.0.0
     #- uses: nelonoel/branch-name@v1
 
-    - name: Declare some variables
-      id: vars
-      run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
+    #- name: Declare some variables
+    #  id: vars
+    #  run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
     - name: Print environment variables
       run: |
-        echo ${BRANCH_NAME}
-        echo ${GITHUB_REF#refs/*/}
-        echo ${{ steps.vars.outputs.SHORT_GITHUB_REF }}
-        echo $BRANCH_NAME
-        echo ${{ env.BRANCH_NAME }}
+        echo $SHORT_GITHUB_REF
+        echo ${SHORT_GITHUB_REF}
+        echo ${{ env.SHORT_GITHUB_REF }}
         echo ${{matrix.POETRY_VENV_PATH}}
 
     # Sets env variables
@@ -115,7 +113,7 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-${{ runner.os }}-${{ steps.vars.outputs.SHORT_GITHUB_REF }}.zip
+        dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
 
     # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
@@ -126,6 +124,6 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: ${{ steps.vars.outputs.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
-        tag: ${{ steps.vars.outputs.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
+        commit: ${{ env.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
+        tag: ${{ env.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
         artifacts: "easyTemplate-*.zip"
