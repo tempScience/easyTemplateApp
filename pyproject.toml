@@ -24,8 +24,8 @@ easyAppLogic = {git = "https://github.com/tempScience/easyAppLogic.git", rev = "
 easyAppGui = {git = "https://github.com/tempScience/easyAppGui.git", rev = "develop"} # download from github develop branch
 #macholib = "^1.14"
 #pyinstaller = "^3.6"
-pyyaml = ">=5.3"
-asteval = ">=0.9.18"
+#pyyaml = ">=5.3"
+#asteval = ">=0.9.18"
 
 [tool.poetry.dev-dependencies]
 #easyAppGui = {path = "../easyAppGui/dist/easyAppGui-0.2.0.tar.gz"} # point to a local directory, changes will be reflected directly in environment
