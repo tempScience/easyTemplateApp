@@ -47,6 +47,7 @@ jobs:
 
 
     - name: Set selected color
+      shell: bash
       run: echo ::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
     #- uses: actions/github-script@v2
