@@ -53,21 +53,11 @@ jobs:
     - name: Set up Poetry (Python packages manager)
       uses: Gr1N/setup-poetry@v2
 
-    # Set up cache
     - name: Cache Poetry
       uses: actions/cache@v2
       with:
         path: ${{ matrix.POETRY_VENV_PATH }}
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
-    #    restore-keys: |
-    #      ${{ matrix.os }}-poetry-
-          
-    #- uses: actions/cache@v1
-    #  with:
-    #    path: ${{ matrix.POETRY_VENV_PATH }}
-    #    key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
-    #    restore-keys: |
-    #      ${{ matrix.os }}-poetry-
 
     - name: Create venv and install dependences
       run: poetry update
