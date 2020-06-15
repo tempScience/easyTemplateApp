@@ -56,7 +56,9 @@ jobs:
     - name: Cache Poetry
       uses: actions/cache@v2
       with:
-        path: ${{ matrix.POETRY_VENV_PATH }}
+        path: |
+          poetry.lock
+          ${{ matrix.POETRY_VENV_PATH }}
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
 
     - name: Create venv and install dependences
