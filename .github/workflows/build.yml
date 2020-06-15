@@ -17,11 +17,11 @@ jobs:
       matrix:
     #    os: [macos-latest, windows-latest, ubuntu-latest]
         os: [macos-latest, ubuntu-latest]
-        #include:
-        #- os: macos-latest
-        #  QWE: macOSSSS
-        #- os: ubuntu-latest
-        #  QWE: ubuntuuu
+        include:
+        - os: macos-latest
+          QWE: macOSSSS
+        - os: ubuntu-latest
+          QWE: ubuntuuu
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -36,7 +36,7 @@ jobs:
 
     # Print variables
     - name: Print variables
-    - run: echo ${{matrix.QWE}}
+      run: echo ${{matrix.QWE}}
     #  run: |
     #    echo $RELEASE_VERSION
     #    echo ${{ env.RELEASE_VERSION }}
