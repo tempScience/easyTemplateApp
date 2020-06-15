@@ -33,9 +33,9 @@ easyAppGui = {git = "https://github.com/tempScience/easyAppGui.git", rev = "deve
 # poetry install --no-dev shouldn't throw a ValueError ... : # https://github.com/python-poetry/poetry/issues/668
 # if poetry build shows error "Directory ../easyAppLogic does not exist", try poetry build -f sdist && poetry build -f wheel ... : https://github.com/python-poetry/poetry/issues/266#issuecomment-636627858
 
-#[[tool.poetry.source]]
-#name = "easyScience"
-#url = "https://easyScience.apptimity.com/"
+[[tool.poetry.source]]
+name = "easyScience"
+url = "https://easyScience.apptimity.com/"
 
 [tool.poetry.scripts]
 easyTemplate = "easyTemplate.main:main"
