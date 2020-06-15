@@ -36,12 +36,17 @@ jobs:
 
     # Sets some env variables
     #- uses: franzdiebold/github-env-vars-action@v1.0.0
-    - uses: nelonoel/branch-name@v1
+    #- uses: nelonoel/branch-name@v1
+
+    - name: Declare some variables
+      id: vars
+        run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
     - name: Print environment variables
       run: |
         echo ${BRANCH_NAME}
         echo ${GITHUB_REF#refs/*/}
+        echo ${{ steps.vars.outputs.SHORT_GITHUB_REF }}
         echo $BRANCH_NAME
         echo ${{ env.BRANCH_NAME }}
         echo ${{matrix.POETRY_VENV_PATH}}
@@ -110,7 +115,7 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-${{ runner.os }}-${GITHUB_REF#refs/*/}.zip
+        dest: easyTemplate-${{ runner.os }}-${{ steps.vars.outputs.SHORT_GITHUB_REF }}.zip
 
     # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
@@ -121,6 +126,6 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: ${GITHUB_REF#refs/*/} #${{ env.RELEASE_VERSION }}
-        tag: ${GITHUB_REF#refs/*/} #${{ env.RELEASE_VERSION }}
+        commit: ${{ steps.vars.outputs.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
+        tag: ${{ steps.vars.outputs.SHORT_GITHUB_REF }} #${{ env.RELEASE_VERSION }}
         artifacts: "easyTemplate-*.zip"
