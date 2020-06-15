@@ -24,6 +24,7 @@ easyAppLogic = {git = "https://github.com/tempScience/easyAppLogic.git", rev = "
 easyAppGui = {git = "https://github.com/tempScience/easyAppGui.git", rev = "develop"} # download from github develop branch
 #macholib = "^1.14"
 #pyinstaller = "^3.6"
+pyyaml = ">5.3"
 
 [tool.poetry.dev-dependencies]
 #easyAppGui = {path = "../easyAppGui/dist/easyAppGui-0.2.0.tar.gz"} # point to a local directory, changes will be reflected directly in environment
@@ -33,9 +34,9 @@ easyAppGui = {git = "https://github.com/tempScience/easyAppGui.git", rev = "deve
 # poetry install --no-dev shouldn't throw a ValueError ... : # https://github.com/python-poetry/poetry/issues/668
 # if poetry build shows error "Directory ../easyAppLogic does not exist", try poetry build -f sdist && poetry build -f wheel ... : https://github.com/python-poetry/poetry/issues/266#issuecomment-636627858
 
-[[tool.poetry.source]]
-name = "easyScience"
-url = "https://easyScience.apptimity.com/"
+#[[tool.poetry.source]]
+#name = "easyScience"
+#url = "https://easyScience.apptimity.com/"
 
 [tool.poetry.scripts]
 easyTemplate = "easyTemplate.main:main"
