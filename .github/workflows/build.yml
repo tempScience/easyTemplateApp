@@ -54,8 +54,9 @@ jobs:
       run: |
         poetry add macholib
         poetry add pyinstaller
+    #- name: Set up PyInstaller
       if: runner.os == 'Windows'
-        poetry add pywin32-ctypes
+      run poetry add pywin32-ctypes
 
     # Runs a single command using the runners shell
     - name: Freeze python app
