@@ -85,8 +85,9 @@ jobs:
     - name: Print environment variables
       run: |
         echo $SHORT_GITHUB_REF
-#        echo ${ SHORT_GITHUB_REF }
         echo ${{ env.SHORT_GITHUB_REF }}
+#        echo ${ SHORT_GITHUB_REF }
+#        echo ${{ env.SHORT_GITHUB_REF }}
 #        echo $SHORT_GITHUB_REF
 #        echo ${SHORT_GITHUB_REF}
 #        echo ${{ env.SHORT_GITHUB_REF }}
