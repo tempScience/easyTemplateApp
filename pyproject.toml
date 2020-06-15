@@ -14,7 +14,7 @@ packages = [
     #{ include = "easyAppGui" },
     { include = "easyTemplate" }
 ]
-
+ 
 [tool.poetry.dependencies]
 python = "^3.7"
 #easyAppLogic = "^0.1" # download from a custom repository given below
