@@ -17,9 +17,11 @@ jobs:
       matrix:
     #    os: [macos-latest, windows-latest, ubuntu-latest]
         os: [macos-latest, ubuntu-latest, windows-latest]
+        #env:
+        #  RELEASE_VERSION: develop
         include:
         - os: macos-latest
-          POETRY_VENV_PATH: ~/Library/Caches/pypoetry/virtualenvs
+          POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs #~/Library/Caches/pypoetry/virtualenvs
         - os: ubuntu-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
         - os: windows-latest
@@ -30,12 +32,21 @@ jobs:
     steps:
 
     # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
-    - uses: actions/checkout@v2
+#    - uses: actions/checkout@v2
+
+    # Sets some env variables
+    - uses: franzdiebold/github-env-vars-action@v1.0.0
+    - name: Print environment variables
+      run: |
+        echo "GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER"
+        echo "GITHUB_REPOSITORY_NAME=$GITHUB_REPOSITORY_NAME"
+        echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+        echo "GITHUB_SHA_SHORT=$GITHUB_SHA_SHORT"
 
     # Sets env variables
-    - name: Set env variables
+    #- name: Set env variables
       #run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
-      run: echo ::set-env name=RELEASE_VERSION::develop
+    #  run: echo ::set-env name=RELEASE_VERSION::develop
 
     # Print variables
     - name: Print variables
