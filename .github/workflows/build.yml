@@ -46,14 +46,14 @@ jobs:
     #  run: echo ::set-output name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
 
-    #- name: Set selected color
-    #  run: echo '::set-env name=SHORT_GITHUB_REF::develop'
+    - name: Set selected color
+      run: echo '::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}'
 
-    - uses: actions/github-script@v2
-      #id: set-result
-      with:
-        script: core.exportVariable('SHORT_GITHUB_REF', ${GITHUB_REF#refs/*/})
-        result-encoding: string
+    #- uses: actions/github-script@v2
+    #  #id: set-result
+    #  with:
+    #    script: core.exportVariable('SHORT_GITHUB_REF', '${GITHUB_REF#refs/*/}')
+    #    result-encoding: string
 
     - name: Get color
       run: echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
