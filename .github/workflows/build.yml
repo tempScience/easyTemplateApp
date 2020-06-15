@@ -56,7 +56,9 @@ jobs:
         poetry add pyinstaller
     - name: Set up PyInstaller (extra)
       if: runner.os == 'Windows'
-      run: poetry add pywin32-ctypes
+      run: |
+      poetry add pywin32-ctypes
+      poetry add pefile
 
     # Runs a single command using the runners shell
     - name: Freeze python app
