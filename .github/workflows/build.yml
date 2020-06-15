@@ -16,12 +16,15 @@ jobs:
     strategy:
       matrix:
     #    os: [macos-latest, windows-latest, ubuntu-latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
         include:
         - os: macos-latest
           POETRY_VENV_PATH: ~/Library/Caches/pypoetry/virtualenvs
         - os: ubuntu-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
+        - os: windows-latest
+          POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
+
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -85,8 +88,8 @@ jobs:
       run: poetry run python Tools/Scripts/FreezeApp.py
 
     # Runs a single command using the runners shell
-    - name: Remove folder
-      run: rm -rf dist/easyTemplate/
+    #- name: Remove folder
+    #  run: rm -rf dist/easyTemplate/
 
     # Creates release zip archive
     - uses: papeloto/action-zip@v1
