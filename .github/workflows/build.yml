@@ -47,7 +47,7 @@ jobs:
 
 
     - name: Set selected color
-      run: echo '::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}'
+      run: echo '::set-env name=SHORT_GITHUB_REF::${ GITHUB_REF#refs/*/ }'
 
     #- uses: actions/github-script@v2
     #  #id: set-result
@@ -55,8 +55,8 @@ jobs:
     #    script: core.exportVariable('SHORT_GITHUB_REF', '${GITHUB_REF#refs/*/}')
     #    result-encoding: string
 
-    - name: Get color
-      run: echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
+    #- name: Get color
+    #  run: echo $SHORT_GITHUB_REF
 
     #
     #- name: set environment variables
@@ -85,7 +85,7 @@ jobs:
     - name: Print environment variables
       run: |
         echo $SHORT_GITHUB_REF
-        echo ${SHORT_GITHUB_REF}
+        echo ${ SHORT_GITHUB_REF }
         echo ${{ env.SHORT_GITHUB_REF }}
 #        echo $SHORT_GITHUB_REF
 #        echo ${SHORT_GITHUB_REF}
