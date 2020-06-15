@@ -32,7 +32,7 @@ jobs:
     steps:
 
     # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
-#    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     # Sets some env variables
     #- uses: franzdiebold/github-env-vars-action@v1.0.0
@@ -41,6 +41,9 @@ jobs:
     - name: Print environment variables
       run: |
         echo ${BRANCH_NAME}
+        echo $BRANCH_NAME
+        echo ${{ env.BRANCH_NAME }}
+        echo ${{matrix.POETRY_VENV_PATH}}
 
     # Sets env variables
     #- name: Set env variables
@@ -106,7 +109,7 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-${{ runner.os }}-${{ env.RELEASE_VERSION }}.zip
+        dest: easyTemplate-${{ runner.os }}-${BRANCH_NAME}.zip
 
     # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
@@ -117,6 +120,6 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: ${{ env.RELEASE_VERSION }}
-        tag: ${{ env.RELEASE_VERSION }}
+        commit: ${BRANCH_NAME} #${{ env.RELEASE_VERSION }}
+        tag: ${BRANCH_NAME} #${{ env.RELEASE_VERSION }}
         artifacts: "easyTemplate-*.zip"
