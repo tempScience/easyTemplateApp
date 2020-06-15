@@ -60,7 +60,7 @@ jobs:
     #- name: Printenv
     #  run: |
     #    echo "SHORT_GITHUB_REF2=${SHORT_GITHUB_REF2}"
-        printenv
+    #    printenv
 
     # Sets up a Python environment
     - uses: actions/setup-python@v2
