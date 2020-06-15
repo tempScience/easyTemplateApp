@@ -17,8 +17,6 @@ jobs:
       matrix:
     #    os: [macos-latest, windows-latest, ubuntu-latest]
         os: [macos-latest, ubuntu-latest, windows-latest]
-        env:
-          SHORT_GITHUB_REF: ${GITHUB_REF#refs/*/}
         include:
         - os: macos-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs #~/Library/Caches/pypoetry/virtualenvs
@@ -27,6 +25,8 @@ jobs:
         - os: windows-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
 
+    env:
+      SHORT_GITHUB_REF: ${GITHUB_REF#refs/*/}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
