@@ -12,6 +12,12 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
 
+    # Sets some env variables
+    #env:
+    #  SHORT_GITHUB_REF: ${GITHUB_REF#refs/*/}
+
+
+
     # Build matrix for different platforms
     strategy:
       matrix:
@@ -25,11 +31,16 @@ jobs:
         - os: windows-latest
           POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
 
-    env:
-      SHORT_GITHUB_REF: ${GITHUB_REF#refs/*/}
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+    - name: Sets some env variables
+      shell: python
+      run: |
+        import os
+        os.environ['SHORT_GITHUB_REF'] = os.environ['GITHUB_REF'].split('/')[-1]
+        print('GITHUB_REF:', os.environ['GITHUB_REF'])
+        print('SHORT_GITHUB_REF:', os.environ['SHORT_GITHUB_REF'])
 
     # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
     - uses: actions/checkout@v2
