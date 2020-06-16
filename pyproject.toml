@@ -27,9 +27,9 @@ easyTemplateLib = {git = "https://github.com/tempScience/easyTemplateLib.git", r
 #asteval = ">=0.9.18"
 
 [tool.poetry.dev-dependencies]
-easyTemplateLib = {path = '../easyTemplateLib'}                            # point to a local directory, changes will be reflected directly in environment
-easyAppLogic = {path = "../easyAppLogic/"}                                 # point to a local directory, changes will be reflected directly in environment
-easyAppGui = {path = "../easyAppGui/"}                                     # point to a local directory, changes will be reflected directly in environment
+#easyTemplateLib = {path = '../easyTemplateLib'}                            # point to a local directory, changes will be reflected directly in environment
+#easyAppLogic = {path = "../easyAppLogic/"}                                 # point to a local directory, changes will be reflected directly in environment
+#easyAppGui = {path = "../easyAppGui/"}                                     # point to a local directory, changes will be reflected directly in environment
 #easyAppGui = {path = "../easyAppGui/dist/easyAppGui-0.2.0.tar.gz"}         # install from a local file
 #easyAppLogic = {path = "../easyAppLogic/dist/easyAppLogic-0.1.0.tar.gz"}   # install from a local file
 # poetry install --no-dev shouldn't throw a ValueError ... : # https://github.com/python-poetry/poetry/issues/668
