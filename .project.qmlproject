@@ -1,17 +1,17 @@
 import QmlProject 1.1
 
 Project {
-    mainFile: "easyTemplate/Gui/main.qml"
+    mainFile: "easyTemplateApp/Gui/main.qml"
 
     // List of module and plugin directories passed to QML runtime
     importPaths: [
-        "easyTemplate",
+        "easyTemplateApp",
         "../easyAppGui/easyAppGui"
     ]
 
     // Include .qml files from specified directory and its subdirectories
     QmlFiles {
-        directory: "easyTemplate"
+        directory: "easyTemplateApp"
     }
     QmlFiles {
         directory: "../easyAppGui/easyAppGui"
@@ -21,7 +21,7 @@ Project {
     // from specified directory and its subdirectories
     Files {
         filter: "qmldir;*.ts;*.qrc"
-        directory: "."
+        directory: "easyTemplateApp"
         recursive: true
     }
     Files {
