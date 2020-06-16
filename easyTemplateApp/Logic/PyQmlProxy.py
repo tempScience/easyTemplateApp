@@ -46,6 +46,12 @@ class PyQmlProxy(QObject):
         self._app_name = value
         self.appNameChanged.emit()
 
+    # Calculator
+
+    @Property('QVariant', notify=calculatorChanged)
+    def calculatorList(self):
+        return self.interface.calculatorList
+
     # Charts
 
     @Slot(QtCharts.QXYSeries)
