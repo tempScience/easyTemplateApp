@@ -7,7 +7,7 @@ from PySide2.QtCharts import QtCharts
 from easyTemplateLib.Objects.fitting import Parameter, Model
 
 from easyTemplateApp.Logic.DisplayModels.DataModels import MeasuredDataModel, CalculatedDataModel
-from easyTemplateApp.Logic.QtInterface import QTInterface
+from easyTemplateApp.Logic.QtInterface import QtInterface
 
 
 def model():
@@ -31,7 +31,7 @@ class PyQmlProxy(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.appName = "easyTemplate"
-        self.interface = QTInterface(model=model(), generator=scatterGenerator)
+        self.interface = QtInterface(model=model(), generator=scatterGenerator)
         self._measured_data_model = MeasuredDataModel(self.interface)
         self._calculated_data_model = CalculatedDataModel(self.interface)
 

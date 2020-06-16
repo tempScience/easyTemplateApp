@@ -6,7 +6,7 @@ from PySide2.QtCore import QPointF
 from easyTemplateLib.interface import Interface, calculators_list
 
 
-class QTInterface(Interface):
+class QtInterface(Interface):
     def __init__(self, model, generator):
         super().__init__(model)
         self.generator = generator
