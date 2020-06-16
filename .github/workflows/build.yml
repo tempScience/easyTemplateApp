@@ -9,70 +9,64 @@ jobs:
   # This workflow contains a single job called "build"
   build:
 
+    env:
+      QWE: ${GITHUB_REF#refs/*/}
+
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
 
     # Build matrix for different platforms
     strategy:
       matrix:
-    #    os: [macos-latest, windows-latest, ubuntu-latest]
         os: [macos-latest, ubuntu-latest, windows-latest]
         include:
         - os: macos-latest
-          POETRY_VENV_PATH: ~/Library/Caches/pypoetry/virtualenvs
+          POETRY_VENV_PATH: /Users/runner/.cache/pypoetry/virtualenvs
         - os: ubuntu-latest
-          POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
+          POETRY_VENV_PATH: /home/runner/.cache/pypoetry/virtualenvs
         - os: windows-latest
-          POETRY_VENV_PATH: ~/.cache/pypoetry/virtualenvs
-
+          POETRY_VENV_PATH: C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
-    - uses: actions/checkout@v2
+    - name: Declare os-independent env variables
+      shell: bash
+      run: echo ::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
-    # Sets env variables
-    - name: Set env variables
-      #run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
-      run: echo ::set-env name=RELEASE_VERSION::develop
+    - name: Print environment variables
+      run: |
+        echo 'QWE:' $QWE
+        echo 'env.QWE:' ${{ env.QWE }}
+        echo 'POETRY_VENV_PATH:' $POETRY_VENV_PATH
+        echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
+        echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
 
-    # Print variables
-    - name: Print variables
-      run: echo ${{matrix.POETRY_VENV_PATH}}
-    #  run: |
-    #    echo $RELEASE_VERSION
-    #    echo ${{ env.RELEASE_VERSION }}
-    #    echo ${{ matrix.os }}
-    #    echo ${{ runner.os }}
-    #    echo $RUNNER_OS
+    - name: Check-out the repository
+      uses: actions/checkout@v2
 
-    # Sets up a Python environment
-    - uses: actions/setup-python@v2
+    - name: Set up the Python environment
+      uses: actions/setup-python@v2
       with:
           python-version: 3.7
 
-    # Sets up a Poetry
-    - uses: Gr1N/setup-poetry@v2
+    - name: Set up Poetry (Python packages manager)
+      uses: Gr1N/setup-poetry@v2
 
-    # Set up cache
-    #- name: Cache Poetry
-    #  uses: actions/cache@v2
-    #  with:
-    #    path: ~/.cache/pypoetry/virtualenvs
-    #    key: poetry-${{ matrix.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('poetry.lock') }}
-    - uses: actions/cache@v1
+    - name: Cache Poetry
+      uses: actions/cache@v2
       with:
-        path: ${{matrix.POETRY_VENV_PATH}}
+        path: |
+          poetry.lock
+          ${{ matrix.POETRY_VENV_PATH }}
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
-        restore-keys: |
-          ${{ matrix.os }}-poetry-
 
-    # Runs a single command using the runners shell
     - name: Create venv and install dependences
       run: poetry update
+  
+    - name: Print Poetry venv path
+      run: poetry env info -p
 
-    # Runs a set of commands using the runners shell
     - name: Set up PyInstaller
       run: |
         poetry add macholib
@@ -83,7 +77,6 @@ jobs:
         poetry add pywin32-ctypes
         poetry add pefile
 
-    # Runs a single command using the runners shell
     - name: Freeze python app
       run: poetry run python Tools/Scripts/FreezeApp.py
 
@@ -96,9 +89,8 @@ jobs:
       with:
         files: dist #dist/easyTemplate.app
         recursive: true
-        dest: easyTemplate-${{ runner.os }}-${{ env.RELEASE_VERSION }}.zip
+        dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
 
-    # Creates GitHub Releases
     - name: Upload artifacts to GitHub releases
       uses: ncipollo/release-action@v1
       with:
@@ -107,6 +99,6 @@ jobs:
         allowUpdates: true
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: ${{ env.RELEASE_VERSION }}
-        tag: ${{ env.RELEASE_VERSION }}
+        commit: ${{ env.SHORT_GITHUB_REF }}
+        tag: ${{ env.SHORT_GITHUB_REF }}
         artifacts: "easyTemplate-*.zip"
