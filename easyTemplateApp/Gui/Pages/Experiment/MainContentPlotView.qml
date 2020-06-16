@@ -28,8 +28,8 @@ Rectangle {
 
             titleText: "Y axis"
 
-            min: 0
-            max: 33
+            min: -5
+            max: 5
         }
 
         EaCharts.ScatterSeries {

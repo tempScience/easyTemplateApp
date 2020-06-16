@@ -4,6 +4,8 @@ import QtQuick.Controls 2.13
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
+import Gui.Globals 1.0 as ExGlobals
+
 EaComponents.SideBarColumn {
 
     Grid {
@@ -17,8 +19,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: "100"
-            onEditingFinished: print("Amplitude")
+            text: ExGlobals.Variables.proxy.amplitude
+            onEditingFinished: ExGlobals.Variables.proxy.amplitude = text
         }
 
         EaElements.Label {
@@ -26,8 +28,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: "200"
-            onEditingFinished: print("Amplitude")
+            text: ExGlobals.Variables.proxy.period
+            onEditingFinished: ExGlobals.Variables.proxy.period = text
         }
 
     }

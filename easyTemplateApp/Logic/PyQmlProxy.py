@@ -11,22 +11,27 @@ from easyTemplateApp.Logic.QtInterface import QtInterface
 
 
 def model():
-    p1 = Parameter("m", 1.5)
-    p2 = Parameter("c", 0.5)
+    p1 = Parameter("A", 2.5)
+    p2 = Parameter("P", 1.8)
 
-    f = lambda x, m, c: m * x + c  # noqa: E731
+    f = lambda x, a, p: a*np.sin(x*p)  # noqa: E731
     m = Model(f, [p1, p2])
     return m
 
 
-def scatterGenerator(x: np.ndarray, m = 3, c = 2) -> np.ndarray:
-    return m * x + c + np.random.normal(-1.0, 1.0, len(x))
+def scatterGenerator(x: np.ndarray, a = 3, p = 2) -> np.ndarray:
+    amp = a*np.random.normal(0.95, 1.05, 1)
+    offsetH = 0.25*np.random.normal(-1.0, 1.0, len(x))
+    period = x * p*np.random.random(1) + offsetH
+    offsetV = 0.1*np.random.normal(-1.0, 1.0, len(x))
+    return amp * np.sin(period) + offsetV
 
 
 class PyQmlProxy(QObject):
 
     appNameChanged = Signal()
     calculatorChanged = Signal()
+    modelChanged = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -84,8 +89,30 @@ class PyQmlProxy(QObject):
     def startFitting(self):
         self.interface.fit()
         self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
 
     @Slot(float)
     def fittingFTol(self, ftol: float):
         self.interface.ftol = ftol
 
+    @Property(str, notify=modelChanged)
+    def amplitude(self):
+        return str(self.interface.model.A)
+
+    @amplitude.setter
+    def setAmplitude(self, value: str):
+        value = float(value)
+        self.interface.set_parameter('A', value)
+        self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
+
+    @Property(str, notify=modelChanged)
+    def period(self):
+        return str(self.interface.model.P)
+
+    @period.setter
+    def setPeriod(self, value: str):
+        value = float(value)
+        self.interface.set_parameter('P', value)
+        self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
