@@ -20,7 +20,7 @@ Rectangle {
             titleText: "X axis"
 
             min: 0
-            max: 20
+            max: 10
         }
 
         EaCharts.ValueAxis {
@@ -29,7 +29,7 @@ Rectangle {
             titleText: "Y axis"
 
             min: 0
-            max: 1
+            max: 33
         }
 
         EaCharts.ScatterSeries {

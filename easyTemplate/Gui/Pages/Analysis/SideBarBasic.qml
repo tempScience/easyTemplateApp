@@ -21,4 +21,10 @@ EaComponents.SideBarColumn {
         onClicked: ExGlobals.Variables.proxy.startFitting()
     }
 
+    ComboBox {
+        currentIndex: ExGlobals.Variables.proxy.calculatorInt
+//        model: ExGlobals.Variables.proxy.interface.calculatorList
+        model: ['scipy', 'not_implemented']
+        Component.onCompleted: ExGlobals.Variables.proxy.calculatorInt = currentIndex
+    }
 }

@@ -9,8 +9,8 @@ from easyTemplate.Logic.PyQmlProxy import PyQmlProxy
 
 def main():
     # Define paths
-    #current_path = os.path.dirname(os.path.abspath(__file__))
-    current_path = os.path.dirname(sys.argv[0])
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    # current_path = os.path.dirname(sys.argv[0])
     main_qml_path = QUrl.fromLocalFile(os.path.join(current_path, "Gui", "main.qml"))
     gui_path = str(QUrl.fromLocalFile(os.path.join(current_path)).toString())
     easyAppGui_path = easyAppGui.__path__[0]

@@ -4,9 +4,10 @@ from PySide2.QtCore import QPointF
 from PySide2.QtCharts import QtCharts
 
 
-class MeasuredDataModel():
-    def __init__(self, parent=None):
+class MeasuredDataModel:
+    def __init__(self, interface=None):
         self._seriesRefs = []
+        self.interface = interface
 
     def updateSeries(self):
         """
@@ -15,7 +16,7 @@ class MeasuredDataModel():
         if not self._seriesRefs:
             return
 
-        series = [QPointF(x, random()) for x in range(21)]
+        series = self.interface.get_XY()
 
         for seriesRef in self._seriesRefs:
             print("seriesRef", seriesRef)
@@ -28,9 +29,10 @@ class MeasuredDataModel():
         self._seriesRefs.append(seriesRef)
 
 
-class CalculatedDataModel():
-    def __init__(self, parent=None):
+class CalculatedDataModel:
+    def __init__(self, interface=None):
         self._seriesRef = None
+        self.interface = interface
 
     def updateSeries(self):
         """
@@ -39,7 +41,7 @@ class CalculatedDataModel():
         if self._seriesRef is None:
             return
 
-        series = [QPointF(0, random()), QPointF(20, random())]
+        series = self.interface.get_fit_XY()
         self._seriesRef.replace(series)
 
     def setSeriesRef(self, seriesRef):
