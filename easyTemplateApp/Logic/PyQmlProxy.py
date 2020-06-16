@@ -1,12 +1,13 @@
+import numpy as np
 from typing import List
 
 from PySide2.QtCore import QObject, Slot, Signal, Property
 from PySide2.QtCharts import QtCharts
 
-import numpy as np
-from easyTemplate.Logic.DisplayModels.DataModels import MeasuredDataModel, CalculatedDataModel
 from easyTemplateLib.Objects.fitting import Parameter, Model
-from easyTemplate.Logic.QtInterface import QTInterface
+
+from easyTemplateApp.Logic.DisplayModels.DataModels import MeasuredDataModel, CalculatedDataModel
+from easyTemplateApp.Logic.QtInterface import QTInterface
 
 
 def model():
