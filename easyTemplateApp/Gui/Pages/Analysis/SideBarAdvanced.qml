@@ -4,10 +4,14 @@ import QtQuick.Controls 2.13
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
+import Gui.Globals 1.0 as ExGlobals
+
 EaComponents.SideBarColumn {
 
-    EaElements.Label {
-        text: "Analysis SideBar Advanced"
+    EaElements.ComboBox {
+        currentIndex: ExGlobals.Variables.proxy.calculatorInt
+        model: ExGlobals.Variables.proxy.calculatorList
+        Component.onCompleted: ExGlobals.Variables.proxy.calculatorInt = currentIndex
     }
 
 }

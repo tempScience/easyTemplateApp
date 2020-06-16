@@ -15,4 +15,30 @@ EaComponents.SideBarColumn {
         onClicked: ExGlobals.Variables.proxy.generateMeasuredData()
     }
 
+    Grid {
+        columns: 2
+        columnSpacing: 20
+        rowSpacing: 10
+        verticalItemAlignment: Grid.AlignVCenter
+
+        EaElements.Label {
+            text: "X-shift"
+        }
+
+        TextField {
+            text: "10"
+            onEditingFinished: print("X-shift")
+        }
+
+        EaElements.Label {
+            text: "Y-shift"
+        }
+
+        TextField {
+            text: "20"
+            onEditingFinished: print("Y-shift")
+        }
+
+    }
+
 }
