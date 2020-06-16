@@ -1,3 +1,11 @@
 {
-    "files": ["main.py", "Gui/main.qml"]
+"files": [
+    "easyTemplateApp/main.py",
+
+    "easyTemplateApp/Logic/ProjectSentinel.py",
+    "easyTemplateApp/Logic/PyQmlProxy.py",
+    "easyTemplateApp/Logic/QtInterface.py",
+
+    "easyTemplateApp/Logic/DisplayModels/DataModels.py"
+    ]
 }

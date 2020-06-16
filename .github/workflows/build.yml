@@ -5,34 +5,100 @@ on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  
+
   # This workflow contains a single job called "build"
   build:
-    
+
+    env:
+      QWE: ${GITHUB_REF#refs/*/}
+
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    # Build matrix for different platforms
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+        - os: macos-latest
+          POETRY_VENV_PATH: /Users/runner/.cache/pypoetry/virtualenvs
+        - os: ubuntu-latest
+          POETRY_VENV_PATH: /home/runner/.cache/pypoetry/virtualenvs
+        - os: windows-latest
+          POETRY_VENV_PATH: C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-    # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
-    - uses: actions/checkout@v2
-    
-    # Sets up a Python environment
-    - uses: actions/setup-python@v2
+
+    - name: Declare os-independent env variables
+      shell: bash
+      run: echo ::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
+
+    - name: Print environment variables
+      run: |
+        echo 'QWE:' $QWE
+        echo 'env.QWE:' ${{ env.QWE }}
+        echo 'POETRY_VENV_PATH:' $POETRY_VENV_PATH
+        echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
+        echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
+
+    - name: Check-out the repository
+      uses: actions/checkout@v2
+
+    - name: Set up the Python environment
+      uses: actions/setup-python@v2
       with:
           python-version: 3.7
 
-    # Sets up a Poetry
-    - uses: Gr1N/setup-poetry@v2
+    - name: Set up Poetry (Python packages manager)
+      uses: Gr1N/setup-poetry@v2
 
-    # Runs a set of commands using the runners shell
-    - name: Shows versions
+    - name: Cache Poetry
+      uses: actions/cache@v2
+      with:
+        path: |
+          poetry.lock
+          ${{ matrix.POETRY_VENV_PATH }}
+        key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
+    - name: Create venv and install dependences
+      run: poetry update
+  
+    - name: Print Poetry venv path
+      run: poetry env info -p
+
+    - name: Set up PyInstaller
       run: |
-        python --version
-        pip --version
-        poetry --version
+        poetry add macholib
+        poetry add pyinstaller
+    - name: Set up PyInstaller (extra)
+      if: runner.os == 'Windows'
+      run: |
+        poetry add pywin32-ctypes
+        poetry add pefile
+
+    - name: Freeze python app
+      run: poetry run python Tools/Scripts/FreezeApp.py
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: poetry update
+    #- name: Remove folder
+    #  run: rm -rf dist/easyTemplate/
+
+    # Creates release zip archive
+    - uses: papeloto/action-zip@v1
+      with:
+        files: dist #dist/easyTemplate.app
+        recursive: true
+        dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
+
+    - name: Upload artifacts to GitHub releases
+      uses: ncipollo/release-action@v1
+      with:
+        draft: true
+        prerelease: true
+        allowUpdates: true
+        replacesArtifacts: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit: ${{ env.SHORT_GITHUB_REF }}
+        tag: ${{ env.SHORT_GITHUB_REF }}
+        artifacts: "easyTemplate-*.zip"
