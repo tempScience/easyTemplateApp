@@ -46,12 +46,6 @@ class PyQmlProxy(QObject):
         self._app_name = value
         self.appNameChanged.emit()
 
-    # Calculator
-
-    @Property('QVariant', notify=calculatorChanged)
-    def calculatorList(self):
-        return self.interface.calculatorList
-
     # Charts
 
     @Slot(QtCharts.QXYSeries)
@@ -62,10 +56,29 @@ class PyQmlProxy(QObject):
     def setCalculatedSeriesRef(self, series):
         self._calculated_data_model.setSeriesRef(series)
 
+    # Data
+
     @Slot()
     def generateMeasuredData(self):
         self.interface.new_model()
         self._measured_data_model.updateSeries()
+
+    # Calculator
+
+    @Property('QVariant', notify=calculatorChanged)
+    def calculatorList(self):
+        return self.interface.calculatorList
+
+    @Property(int, notify=calculatorChanged)
+    def calculatorInt(self):
+        return self.interface.calculatorList.index(self.interface.calculator)
+
+    @calculatorInt.setter
+    def setCalculator(self, value: int):
+        self.interface.calculator = self.interface.calculatorList[value]
+        self.calculatorChanged.emit()
+
+    # Fitting
 
     @Slot()
     def startFitting(self):
@@ -76,11 +89,3 @@ class PyQmlProxy(QObject):
     def fittingFTol(self, ftol: float):
         self.interface.ftol = ftol
 
-    @Property(int, notify=calculatorChanged)
-    def calculatorInt(self):
-        return self.interface.calculatorList.index(self.interface.calculator)
-
-    @calculatorInt.setter
-    def setCalculator(self, value: int):
-        self.interface.calculator = self.interface.calculatorList[value]
-        self.calculatorChanged.emit()
