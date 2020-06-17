@@ -24,9 +24,12 @@ class QtInterface(Interface):
     def new_model(self):
         self.y = self.generator(self.x)
 
+    def update_model(self):
+        self.y_opt = self.model.func(self.x)
+
     def set_parameter(self, parm, value):
         super().set_parameter(parm, value)
-        self.y_opt = self.model.func(self.x)
+        self.update_model()
 
 
 

@@ -84,6 +84,12 @@ class PyQmlProxy(QObject):
         self.interface.calculator = self.interface.calculatorList[value]
         self.calculatorChanged.emit()
 
+    @Slot()
+    def updateCalculatedData(self):
+        self.interface.update_model()
+        self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
+
     # Fitting
 
     @Slot()
