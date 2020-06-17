@@ -7,11 +7,18 @@ import easyAppGui.Components 1.0 as EaComponents
 import Gui.Globals 1.0 as ExGlobals
 
 EaComponents.SideBarColumn {
+    width: parent.width
 
-    EaElements.ComboBox {
-        currentIndex: ExGlobals.Variables.proxy.calculatorInt
-        model: ExGlobals.Variables.proxy.calculatorList
-        Component.onCompleted: ExGlobals.Variables.proxy.calculatorInt = currentIndex
+    EaElements.GroupBox {
+        title: qsTr("Calculator")
+        collapsible: false
+
+        EaElements.ComboBox {
+            width: 200
+            currentIndex: ExGlobals.Variables.proxy.calculatorInt
+            model: ExGlobals.Variables.proxy.calculatorList
+            Component.onCompleted: ExGlobals.Variables.proxy.calculatorInt = currentIndex
+        }
     }
 
 }

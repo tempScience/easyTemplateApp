@@ -8,68 +8,81 @@ import easyAppGui.Components 1.0 as EaComponents
 import Gui.Globals 1.0 as ExGlobals
 
 EaComponents.SideBarColumn {
+    width: parent.width
 
-    EaElements.SideBarButton {
-        fontIcon: "plus-circle"
-        text: "Generate measured data"
-        onClicked: ExGlobals.Variables.proxy.generateMeasuredData()
-        Component.onCompleted: ExGlobals.Variables.proxy.generateMeasuredData()
-    }
+    EaElements.GroupBox {
+        title: qsTr("Measured data")
+        collapsible: false
 
-    Grid {
-        columns: 4
-        columnSpacing: 20
-        rowSpacing: 10
-        verticalItemAlignment: Grid.AlignVCenter
-
-        EaElements.Label {
-            text: "Amplitude"
-        }
-
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.amplitude).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.amplitude = text
-        }
-
-        EaElements.Label {
-            text: "Period"
-        }
-
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.period).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.period = text
-        }
-
-        EaElements.Label {
-            text: "X-shift"
-        }
-
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.xShift = text
-        }
-
-        EaElements.Label {
-            text: "Y-shift"
-        }
-
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.yShift = text
+        EaElements.SideBarButton {
+            fontIcon: "plus-circle"
+            text: "Generate measured data"
+            onClicked: ExGlobals.Variables.proxy.generateMeasuredData()
+            Component.onCompleted: ExGlobals.Variables.proxy.generateMeasuredData()
         }
     }
 
-    EaElements.SideBarButton {
-        fontIcon: "play-circle"
-        text: "Start fitting"
-        onClicked: {
-            EaGlobals.Variables.summaryPageEnabled = true
-            ExGlobals.Variables.proxy.startFitting()
+    EaElements.GroupBox {
+        title: qsTr("Fit parameters")
+        visible: EaGlobals.Variables.analysisPageEnabled
+        collapsed: false
+
+        Grid {
+            columns: 4
+            columnSpacing: 20
+            rowSpacing: 10
+            verticalItemAlignment: Grid.AlignVCenter
+
+            EaElements.Label {
+                text: "Amplitude"
+            }
+
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.amplitude).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.amplitude = text
+            }
+
+            EaElements.Label {
+                text: "Period"
+            }
+
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.period).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.period = text
+            }
+
+            EaElements.Label {
+                text: "X-shift"
+            }
+
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.xShift = text
+            }
+
+            EaElements.Label {
+                text: "Y-shift"
+            }
+
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.yShift = text
+            }
         }
+
+        EaElements.SideBarButton {
+            fontIcon: "play-circle"
+            text: "Start fitting"
+            onClicked: {
+                EaGlobals.Variables.summaryPageEnabled = true
+                ExGlobals.Variables.proxy.startFitting()
+            }
+        }
+
     }
 
     Component.onCompleted: ExGlobals.Variables.proxy.updateCalculatedData()

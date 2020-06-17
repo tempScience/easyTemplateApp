@@ -58,7 +58,7 @@ EaComponents.ApplicationWindow {
         // Home tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.homePageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "home"
             text: qsTr("Home")
             ToolTip.text: qsTr("Home page")
@@ -66,7 +66,7 @@ EaComponents.ApplicationWindow {
         // Project tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.projectPageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "archive"
             text: qsTr("Project")
             ToolTip.text: qsTr("Project description page")
@@ -74,7 +74,7 @@ EaComponents.ApplicationWindow {
         // Sample tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.samplePageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "gem"
             text: qsTr("Sample")
             ToolTip.text: qsTr("Sample model description page")
@@ -82,7 +82,7 @@ EaComponents.ApplicationWindow {
         // Experiment tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.experimentPageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "microscope"
             text: qsTr("Experiment")
             ToolTip.text: qsTr("Experimental settings and data page")
@@ -90,7 +90,7 @@ EaComponents.ApplicationWindow {
         // Analysis tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.analysisPageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "calculator"
             text: qsTr("Analysis")
             ToolTip.text: qsTr("Simulation and fitting page")
@@ -98,7 +98,7 @@ EaComponents.ApplicationWindow {
         // Summary tab
         EaElements.TabButton {
             enabled: EaGlobals.Variables.summaryPageEnabled
-            height: EaStyle.Sizes.appBarHeight
+            implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "clipboard-list"
             text: qsTr("Summary")
             ToolTip.text: qsTr("Summary of the work done")

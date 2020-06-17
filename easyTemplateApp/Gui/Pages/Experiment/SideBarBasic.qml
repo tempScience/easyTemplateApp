@@ -8,43 +8,54 @@ import easyAppGui.Components 1.0 as EaComponents
 import Gui.Globals 1.0 as ExGlobals
 
 EaComponents.SideBarColumn {
+    width: parent.width
 
-    EaElements.SideBarButton {
-        fontIcon: "plus-circle"
-        text: "Generate measured data"
-        onClicked: {
-            EaGlobals.Variables.analysisPageEnabled = true
-            ExGlobals.Variables.proxy.generateMeasuredData()
+    EaElements.GroupBox {
+        title: qsTr("Measured data")
+        collapsible: false
+
+        EaElements.SideBarButton {
+            fontIcon: "plus-circle"
+            text: "Generate measured data"
+            onClicked: {
+                EaGlobals.Variables.analysisPageEnabled = true
+                ExGlobals.Variables.proxy.generateMeasuredData()
+            }
         }
     }
 
-    Grid {
+    EaElements.GroupBox {
+        title: qsTr("Instrumental parameters")
         visible: EaGlobals.Variables.analysisPageEnabled
+        collapsed: false
 
-        columns: 4
-        columnSpacing: 20
-        rowSpacing: 10
-        verticalItemAlignment: Grid.AlignVCenter
+        Grid {
+            columns: 4
+            columnSpacing: 20
+            rowSpacing: 10
+            verticalItemAlignment: Grid.AlignVCenter
 
-        EaElements.Label {
-            text: "X-shift"
-        }
+            EaElements.Label {
+                text: "X-shift"
+            }
 
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.xShift = text
-        }
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.xShift = text
+            }
 
-        EaElements.Label {
-            text: "Y-shift"
-        }
+            EaElements.Label {
+                text: "Y-shift"
+            }
 
-        TextField {
-            width: 125
-            text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
-            onEditingFinished: ExGlobals.Variables.proxy.yShift = text
+            TextField {
+                width: 125
+                text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
+                onEditingFinished: ExGlobals.Variables.proxy.yShift = text
+            }
         }
     }
 
 }
+
