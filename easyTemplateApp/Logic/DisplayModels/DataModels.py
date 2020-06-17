@@ -19,7 +19,6 @@ class MeasuredDataModel:
         series = self.interface.get_XY()
 
         for seriesRef in self._seriesRefs:
-            print("seriesRef", seriesRef)
             seriesRef.replace(series)
 
     def addSeriesRef(self, seriesRef):
