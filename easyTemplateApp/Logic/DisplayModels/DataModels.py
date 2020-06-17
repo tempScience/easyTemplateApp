@@ -6,27 +6,36 @@ from PySide2.QtCharts import QtCharts
 
 class MeasuredDataModel:
     def __init__(self, interface=None):
-        self._seriesRefs = []
+        self._lowerSeriesRefs = []
+        self._upperSeriesRefs = []
         self.interface = interface
 
     def updateSeries(self):
         """
         Generates new data and updates the GUI ChartView LineSeries.
         """
-        if not self._seriesRefs:
+        if not self._lowerSeriesRefs or not self._upperSeriesRefs:
             return
 
-        series = self.interface.get_XY()
+        lowerSeries = self.interface.get_lowerXY()
+        upperSeries = self.interface.get_upperXY()
 
-        for seriesRef in self._seriesRefs:
-            seriesRef.replace(series)
+        for seriesRef in self._lowerSeriesRefs:
+            seriesRef.replace(lowerSeries)
+        for seriesRef in self._upperSeriesRefs:
+            seriesRef.replace(upperSeries)
 
-    def addSeriesRef(self, seriesRef):
+    def addLowerSeriesRef(self, seriesRef):
         """
         Sets series to be a reference to the GUI ChartView LineSeries.
         """
-        self._seriesRefs.append(seriesRef)
+        self._lowerSeriesRefs.append(seriesRef)
 
+    def addUpperSeriesRef(self, seriesRef):
+        """
+        Sets series to be a reference to the GUI ChartView LineSeries.
+        """
+        self._upperSeriesRefs.append(seriesRef)
 
 class CalculatedDataModel:
     def __init__(self, interface=None):
