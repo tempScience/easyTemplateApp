@@ -22,7 +22,6 @@ EaComponents.SideBarColumn {
 
     EaElements.GroupBox {
         title: qsTr("Group 2")
-        visible: EaGlobals.Variables.analysisPageEnabled
         collapsed: false
 
         Grid {
