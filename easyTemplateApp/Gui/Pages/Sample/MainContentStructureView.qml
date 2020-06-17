@@ -8,15 +8,13 @@ import easyAppGui.Components 1.0 as EaComponents
 import Gui.Globals 1.0 as ExGlobals
 
 Rectangle {
-    property real scale: 100
-
     color: EaStyle.Colors.mainContentBackground
 
     Rectangle {
         anchors.centerIn: parent
 
-        height: ExGlobals.Variables.proxy.amplitude ? 100 * ExGlobals.Variables.proxy.amplitude : 200
-        width: ExGlobals.Variables.proxy.period ? 100 * ExGlobals.Variables.proxy.period : 200
+        height: ExGlobals.Variables.proxy.amplitude ? 80 * Math.abs(ExGlobals.Variables.proxy.amplitude) : 200
+        width: ExGlobals.Variables.proxy.period ? 80 * Math.abs(ExGlobals.Variables.proxy.period) : 200
 
         opacity: 0.8
         color: "coral"
@@ -34,12 +32,12 @@ Rectangle {
             x: -height
             y: (parent.height + width) / 2
             transform: Rotation { origin.x: 0; origin.y: 0; angle: -90}
-            text: "Amplitude = " + (parent.height / 100).toFixed(1)
+            text: "Amplitude = " + (parent.height / 80).toFixed(2)
         }
         EaElements.Label {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
-            text: "Period = " + (parent.width / 100).toFixed(1)
+            text: "Period = " + (parent.width / 80).toFixed(2)
         }
     }
 
