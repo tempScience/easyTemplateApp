@@ -1,6 +1,7 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.13
 
+import easyAppGui.Globals 1.0 as EaGlobals
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
@@ -8,7 +9,15 @@ import Gui.Globals 1.0 as ExGlobals
 
 EaComponents.SideBarColumn {
 
+    EaElements.SideBarButton {
+        fontIcon: "plus-circle"
+        text: "Add new sample"
+        onClicked: EaGlobals.Variables.experimentPageEnabled = true
+    }
+
     Grid {
+        visible: EaGlobals.Variables.experimentPageEnabled
+
         columns: 4
         columnSpacing: 20
         rowSpacing: 10

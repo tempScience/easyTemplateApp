@@ -2,6 +2,7 @@ import QtQuick 2.13
 import QtQuick.Controls 2.13
 import QtCharts 2.13
 
+import easyAppGui.Globals 1.0 as EaGlobals
 import easyAppGui.Style 1.0 as EaStyle
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Charts 1.0 as EaCharts
@@ -9,6 +10,8 @@ import easyAppGui.Charts 1.0 as EaCharts
 import Gui.Globals 1.0 as ExGlobals
 
 Rectangle {
+    visible: EaGlobals.Variables.analysisPageEnabled
+
     color: EaStyle.Colors.mainContentBackground
 
     EaCharts.ChartView {
