@@ -16,7 +16,7 @@ EaComponents.SideBarColumn {
     }
 
     Grid {
-        columns: 2
+        columns: 4
         columnSpacing: 20
         rowSpacing: 10
         verticalItemAlignment: Grid.AlignVCenter
@@ -26,7 +26,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: ExGlobals.Variables.proxy.amplitude
+            width: 125
+            text: parseFloat(ExGlobals.Variables.proxy.amplitude).toFixed(2)
             onEditingFinished: ExGlobals.Variables.proxy.amplitude = text
         }
 
@@ -35,7 +36,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: ExGlobals.Variables.proxy.period
+            width: 125
+            text: parseFloat(ExGlobals.Variables.proxy.period).toFixed(2)
             onEditingFinished: ExGlobals.Variables.proxy.period = text
         }
 
@@ -44,7 +46,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: ExGlobals.Variables.proxy.xShift
+            width: 125
+            text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
             onEditingFinished: ExGlobals.Variables.proxy.xShift = text
         }
 
@@ -53,7 +56,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: ExGlobals.Variables.proxy.yShift
+            width: 125
+            text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
             onEditingFinished: ExGlobals.Variables.proxy.yShift = text
         }
     }
@@ -63,5 +67,7 @@ EaComponents.SideBarColumn {
         text: "Start fitting"
         onClicked: ExGlobals.Variables.proxy.startFitting()
     }
+
+    Component.onCompleted: ExGlobals.Variables.proxy.updateCalculatedData()
 
 }
