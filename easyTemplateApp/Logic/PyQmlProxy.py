@@ -11,21 +11,22 @@ from easyTemplateApp.Logic.QtInterface import QtInterface
 
 
 def model():
-    p1 = Parameter("A", 2.5)
-    p2 = Parameter("P", 1.8)
-
-    f = lambda x, a, p: a*np.sin(x*p)  # noqa: E731
-    m = Model(f, [p1, p2])
+    p1 = Parameter("amplitude", 3.5)
+    p2 = Parameter("period", np.pi)
+    p3 = Parameter("x_shift", 0.0)
+    p4 = Parameter("y_shift", 0.0)
+    f = lambda x, amplitude, period, x_shift, y_shift: amplitude * np.sin((2 * np.pi / period) * (x + x_shift)) + y_shift
+    m = Model(f, [p1, p2, p3, p4])
     return m
 
-
-def scatterGenerator(x: np.ndarray, a = 3, p = 2) -> np.ndarray:
-    amp = a*np.random.normal(0.95, 1.05, 1)
-    offsetH = 0.25*np.random.normal(-1.0, 1.0, len(x))
-    period = x * p*np.random.random(1) + offsetH
-    offsetV = 0.1*np.random.normal(-1.0, 1.0, len(x))
-    return amp * np.sin(period) + offsetV
-
+def scatterGenerator(x: np.ndarray) -> np.ndarray:
+    amplitude = np.random.uniform(3.0, 4.0)
+    period = np.random.uniform(np.pi*0.9, np.pi*1.1)
+    x_shift = np.random.uniform(-np.pi*0.25, np.pi*0.25)
+    y_shift = np.random.uniform(-0.5, 0.5)
+    y = amplitude * np.sin((2 * np.pi / period) * (x + x_shift)) + y_shift
+    y_noise = np.random.normal(0, 0.5, x.shape)
+    return y + y_noise
 
 class PyQmlProxy(QObject):
 
@@ -97,22 +98,44 @@ class PyQmlProxy(QObject):
 
     @Property(str, notify=modelChanged)
     def amplitude(self):
-        return str(self.interface.model.A)
+        return str(self.interface.model.amplitude)
 
     @amplitude.setter
     def setAmplitude(self, value: str):
         value = float(value)
-        self.interface.set_parameter('A', value)
+        self.interface.set_parameter('amplitude', value)
         self._calculated_data_model.updateSeries()
         self.modelChanged.emit()
 
     @Property(str, notify=modelChanged)
     def period(self):
-        return str(self.interface.model.P)
+        return str(self.interface.model.period)
 
     @period.setter
     def setPeriod(self, value: str):
         value = float(value)
-        self.interface.set_parameter('P', value)
+        self.interface.set_parameter('period', value)
+        self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
+
+    @Property(str, notify=modelChanged)
+    def xShift(self):
+        return str(self.interface.model.x_shift)
+
+    @xShift.setter
+    def setXShift(self, value: str):
+        value = float(value)
+        self.interface.set_parameter('x_shift', value)
+        self._calculated_data_model.updateSeries()
+        self.modelChanged.emit()
+
+    @Property(str, notify=modelChanged)
+    def yShift(self):
+        return str(self.interface.model.y_shift)
+
+    @xShift.setter
+    def setYShift(self, value: str):
+        value = float(value)
+        self.interface.set_parameter('y_shift', value)
         self._calculated_data_model.updateSeries()
         self.modelChanged.emit()

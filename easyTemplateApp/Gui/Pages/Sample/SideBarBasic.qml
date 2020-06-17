@@ -31,7 +31,6 @@ EaComponents.SideBarColumn {
             text: ExGlobals.Variables.proxy.period
             onEditingFinished: ExGlobals.Variables.proxy.period = text
         }
-
     }
 
 }

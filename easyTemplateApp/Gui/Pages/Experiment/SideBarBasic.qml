@@ -13,6 +13,7 @@ EaComponents.SideBarColumn {
         fontIcon: "plus-circle"
         text: "Generate measured data"
         onClicked: ExGlobals.Variables.proxy.generateMeasuredData()
+        Component.onCompleted: ExGlobals.Variables.proxy.generateMeasuredData()
     }
 
     Grid {
@@ -26,8 +27,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: "10"
-            onEditingFinished: print("X-shift")
+            text: ExGlobals.Variables.proxy.xShift
+            onEditingFinished: ExGlobals.Variables.proxy.xShift = text
         }
 
         EaElements.Label {
@@ -35,8 +36,8 @@ EaComponents.SideBarColumn {
         }
 
         TextField {
-            text: "20"
-            onEditingFinished: print("Y-shift")
+            text: ExGlobals.Variables.proxy.yShift
+            onEditingFinished: ExGlobals.Variables.proxy.yShift = text
         }
 
     }

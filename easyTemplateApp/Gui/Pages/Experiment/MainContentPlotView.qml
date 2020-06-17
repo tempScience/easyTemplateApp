@@ -19,8 +19,10 @@ Rectangle {
 
             titleText: "X axis"
 
+            tickCount: 4
+
             min: 0
-            max: 10
+            max: Math.PI * (tickCount - 1)
         }
 
         EaCharts.ValueAxis {
