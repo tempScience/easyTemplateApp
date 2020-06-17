@@ -133,7 +133,7 @@ class PyQmlProxy(QObject):
     def yShift(self):
         return str(self.interface.model.y_shift)
 
-    @xShift.setter
+    @yShift.setter
     def setYShift(self, value: str):
         value = float(value)
         self.interface.set_parameter('y_shift', value)
