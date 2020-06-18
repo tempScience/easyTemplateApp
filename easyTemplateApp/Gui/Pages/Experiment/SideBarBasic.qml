@@ -15,12 +15,14 @@ EaComponents.SideBarColumn {
         collapsible: false
 
         EaElements.SideBarButton {
+            id: generateMeasuredDataButton
             fontIcon: "plus-circle"
             text: "Generate measured data"
             onClicked: {
                 EaGlobals.Variables.analysisPageEnabled = true
                 ExGlobals.Variables.proxy.generateMeasuredData()
             }
+            Component.onCompleted: ExGlobals.Variables.generateMeasuredDataButton = generateMeasuredDataButton
         }
     }
 

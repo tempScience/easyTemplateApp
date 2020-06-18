@@ -6,6 +6,7 @@ import easyAppGui.Globals 1.0 as EaGlobals
 import easyAppGui.Elements 1.0 as EaElements
 import easyAppGui.Components 1.0 as EaComponents
 
+import Gui.Globals 1.0 as ExGlobals
 import Gui.Pages.Home 1.0 as ExHomePage
 import Gui.Pages.Project 1.0 as ExProjectPage
 import Gui.Pages.Sample 1.0 as ExSamplePage
@@ -14,6 +15,8 @@ import Gui.Pages.Analysis 1.0 as ExAnalysisPage
 import Gui.Pages.Summary 1.0 as ExSummaryPage
 
 EaComponents.ApplicationWindow {
+
+    //property alias projectTabButton: projectTabButton
 
     ///////////////////
     // APPLICATION BAR
@@ -57,51 +60,63 @@ EaComponents.ApplicationWindow {
     appBarCentralTabs: [
         // Home tab
         EaElements.TabButton {
+            id: homeTabButton
             enabled: EaGlobals.Variables.homePageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "home"
             text: qsTr("Home")
             ToolTip.text: qsTr("Home page")
+            Component.onCompleted: ExGlobals.Variables.homeTabButton = homeTabButton
         },
         // Project tab
         EaElements.TabButton {
+            id: projectTabButton
             enabled: EaGlobals.Variables.projectPageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "archive"
             text: qsTr("Project")
             ToolTip.text: qsTr("Project description page")
+            Component.onCompleted: ExGlobals.Variables.projectTabButton = projectTabButton
         },
         // Sample tab
         EaElements.TabButton {
+            id: sampleTabButton
             enabled: EaGlobals.Variables.samplePageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "gem"
             text: qsTr("Sample")
             ToolTip.text: qsTr("Sample model description page")
+            Component.onCompleted: ExGlobals.Variables.sampleTabButton = sampleTabButton
         },
         // Experiment tab
         EaElements.TabButton {
+            id: experimentTabButton
             enabled: EaGlobals.Variables.experimentPageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "microscope"
             text: qsTr("Experiment")
             ToolTip.text: qsTr("Experimental settings and data page")
+            Component.onCompleted: ExGlobals.Variables.experimentTabButton = experimentTabButton
         },
         // Analysis tab
         EaElements.TabButton {
+            id: analysisTabButton
             enabled: EaGlobals.Variables.analysisPageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "calculator"
             text: qsTr("Analysis")
             ToolTip.text: qsTr("Simulation and fitting page")
+            Component.onCompleted: ExGlobals.Variables.analysisTabButton = analysisTabButton
         },
         // Summary tab
         EaElements.TabButton {
+            id: summaryTabButton
             enabled: EaGlobals.Variables.summaryPageEnabled
             implicitHeight: EaStyle.Sizes.appBarHeight
             fontIcon: "clipboard-list"
             text: qsTr("Summary")
             ToolTip.text: qsTr("Summary of the work done")
+            Component.onCompleted: ExGlobals.Variables.summaryTabButton = summaryTabButton
         }
     ]
 
@@ -182,7 +197,7 @@ EaComponents.ApplicationWindow {
             }
 
             sideBar: EaComponents.SideBar {
-                basicControls: ExExperimentPage.SideBarBasic {}
+                basicControls: ExExperimentPage.SideBarBasic { id: experimentSideBarBasic }
                 advancedControls: ExExperimentPage.SideBarAdvanced {}
             }
         },

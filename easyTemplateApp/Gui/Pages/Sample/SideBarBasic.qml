@@ -15,9 +15,11 @@ EaComponents.SideBarColumn {
         collapsible: false
 
         EaElements.SideBarButton {
+            id: addNewSampleButton
             fontIcon: "plus-circle"
             text: "Add new sample"
             onClicked: EaGlobals.Variables.experimentPageEnabled = true
+            Component.onCompleted: ExGlobals.Variables.addNewSampleButton = addNewSampleButton
         }
     }
 

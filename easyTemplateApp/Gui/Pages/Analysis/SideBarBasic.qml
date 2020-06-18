@@ -75,14 +75,15 @@ EaComponents.SideBarColumn {
         }
 
         EaElements.SideBarButton {
+            id: startFittingButton
             fontIcon: "play-circle"
             text: "Start fitting"
             onClicked: {
                 EaGlobals.Variables.summaryPageEnabled = true
                 ExGlobals.Variables.proxy.startFitting()
             }
+            Component.onCompleted: ExGlobals.Variables.startFittingButton = startFittingButton
         }
-
     }
 
     Component.onCompleted: ExGlobals.Variables.proxy.updateCalculatedData()
