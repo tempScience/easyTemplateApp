@@ -16,8 +16,6 @@ import Gui.Pages.Summary 1.0 as ExSummaryPage
 
 EaComponents.ApplicationWindow {
 
-    //property alias projectTabButton: projectTabButton
-
     ///////////////////
     // APPLICATION BAR
     ///////////////////
@@ -253,4 +251,34 @@ EaComponents.ApplicationWindow {
         text: "Status bar"
     }
 
+
+    Item {
+        id: item
+        anchors.fill: parent
+    }
+
+    Timer {
+        id: quit
+        interval: 5000
+        onTriggered: {
+            print("* closing app")
+            Qt.quit()
+        }
+    }
+
+    Timer {
+        id: saveScreenshot
+        interval: 5000
+        onTriggered: {
+            print("* saving screenshot")
+            print("* screenshot path:", _screenshotPath)
+            analysisTabButton.grabToImage(function(result) { result.saveToFile(_screenshotPath) })
+            quit.start()
+        }
+    }
+
+    Component.onCompleted: {
+        print("* windows size:", window.width, "x", window.height)
+        saveScreenshot.start()
+    }
 }
