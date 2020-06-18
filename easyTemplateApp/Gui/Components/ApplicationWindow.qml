@@ -251,7 +251,7 @@ EaComponents.ApplicationWindow {
         text: "Status bar"
     }
 
-
+    /*
     Item {
         id: item
         anchors.fill: parent
@@ -281,4 +281,5 @@ EaComponents.ApplicationWindow {
         print("* windows size:", window.width, "x", window.height)
         saveScreenshot.start()
     }
+    */
 }
