@@ -81,6 +81,7 @@ jobs:
       run: poetry run python Tools/Scripts/FreezeApp.py
 
     - name: Save screenshot
+      if: runner.os == 'macOS'
       run: poetry run easyTemplateApp
 
     # Runs a single command using the runners shell
