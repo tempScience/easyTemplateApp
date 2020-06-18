@@ -28,6 +28,7 @@ def main():
 
     # Create qml application engine
     engine = QQmlApplicationEngine()
+    engine.rootContext().setContextProperty("_screenshotPath", os.path.join(current_path, "..", "dist", "screenshot.png"))
     engine.rootContext().setContextProperty("_pyQmlProxyObj", py_qml_proxy_obj)
     engine.addImportPath(easyAppGui_path)
     engine.addImportPath(gui_path)

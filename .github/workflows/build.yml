@@ -63,7 +63,7 @@ jobs:
 
     - name: Create venv and install dependences
       run: poetry update
-  
+
     - name: Print Poetry venv path
       run: poetry env info -p
 
@@ -79,6 +79,9 @@ jobs:
 
     - name: Freeze python app
       run: poetry run python Tools/Scripts/FreezeApp.py
+
+    - name: Save screenshot
+      run: poetry run easyTemplateApp
 
     # Runs a single command using the runners shell
     #- name: Remove folder
