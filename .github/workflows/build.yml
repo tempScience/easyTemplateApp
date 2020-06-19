@@ -34,12 +34,16 @@ jobs:
       shell: bash
       run: echo ::set-env name=SHORT_GITHUB_REF::${GITHUB_REF#refs/*/}
 
+    #- name: Declare os-dependent env variables
+    #  shell: bash
+    #  run: echo ::set-env name=POETRY_VENV_PATH::C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs}
+    #  if: runner.os == 'Windows'
+
     - name: Print environment variables
       run: |
-        echo 'POETRY_VENV_PATH:' $POETRY_VENV_PATH
-        echo 'env.POETRY_VENV_PATH:' ${{ env.POETRY_VENV_PATH }}
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
         echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
+        echo 'matrix.POETRY_VENV_PATH:' ${{ matrix.POETRY_VENV_PATH }}
 
     - name: Check-out the repository
       uses: actions/checkout@v2
@@ -55,9 +59,7 @@ jobs:
     - name: Cache Poetry
       uses: actions/cache@v2
       with:
-        path: |
-          poetry.lock
-          ${{ matrix.POETRY_VENV_PATH }}
+        path: ${{ matrix.POETRY_VENV_PATH }}
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
 
     - name: Create venv and install dependences
