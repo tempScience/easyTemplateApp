@@ -36,8 +36,6 @@ jobs:
 
     - name: Print environment variables
       run: |
-    #    echo 'QWE:' $QWE
-    #    echo 'env.QWE:' ${{ env.QWE }}
         echo 'POETRY_VENV_PATH:' $POETRY_VENV_PATH
         echo 'env.POETRY_VENV_PATH:' ${{ env.POETRY_VENV_PATH }}
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
