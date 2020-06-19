@@ -58,9 +58,11 @@ EaComponents.SideBarColumn {
             }
 
             TextField {
+                id: xShiftTextInput
                 width: 125
                 text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
                 onEditingFinished: ExGlobals.Variables.proxy.xShift = text
+                Component.onCompleted: ExGlobals.Variables.xShiftTextInput = xShiftTextInput
             }
 
             EaElements.Label {
@@ -68,9 +70,11 @@ EaComponents.SideBarColumn {
             }
 
             TextField {
+                id: yShiftTextInput
                 width: 125
                 text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
                 onEditingFinished: ExGlobals.Variables.proxy.yShift = text
+                Component.onCompleted: ExGlobals.Variables.yShiftTextInput = yShiftTextInput
             }
         }
 

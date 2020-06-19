@@ -39,9 +39,11 @@ EaComponents.ApplicationWindow {
     // Right group of application bar tool buttons
     appBarRightButtons: [
         EaElements.ToolButton {
+            id: preferencesButton
             fontIcon: "\uf013"
             ToolTip.text: qsTr("Application preferences")
             onClicked: EaGlobals.Variables.showAppPreferencesDialog = true
+            Component.onCompleted: ExGlobals.Variables.preferencesButton = preferencesButton
         },
         EaElements.ToolButton {
             fontIcon: "\uf059"

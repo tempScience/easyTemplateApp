@@ -12,7 +12,16 @@ QtObject {
     property var analysisTabButton
     property var summaryTabButton
 
+    property var preferencesButton
+
     property var addNewSampleButton
     property var generateMeasuredDataButton
     property var startFittingButton
+
+    property var amplitudeTextInput
+    property var periodTextInput
+    property var xShiftTextInput
+    property var yShiftTextInput
+
+    property var themeSelector
 }
