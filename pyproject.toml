@@ -34,10 +34,13 @@ easyTemplateLib = {git = "https://github.com/tempScience/easyTemplateLib.git", r
 #easyAppLogic = {path = "../easyAppLogic/dist/easyAppLogic-0.1.0.tar.gz"}   # install from a local file
 # poetry install --no-dev shouldn't throw a ValueError ... : # https://github.com/python-poetry/poetry/issues/668
 # if poetry build shows error "Directory ../easyAppLogic does not exist", try poetry build -f sdist && poetry build -f wheel ... : https://github.com/python-poetry/poetry/issues/266#issuecomment-636627858
-macholib = "^1.14"
+# PyInstaller
 pyinstaller = "^3.6"
+macholib = "^1.14"
 pywin32-ctypes = { version = "^0.2.0", markers = "sys_platform == 'win32'" }
 pefile = { version = "^2019.4.18", platform = "win32" }
+# Misc
+matplotlib = "^3.2"
 
 #[[tool.poetry.source]]
 #name = "easyScience"
