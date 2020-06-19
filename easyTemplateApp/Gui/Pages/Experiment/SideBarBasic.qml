@@ -41,7 +41,7 @@ EaComponents.SideBarColumn {
                 text: "X-shift"
             }
 
-            TextField {
+            EaElements.TextField {
                 width: 125
                 text: parseFloat(ExGlobals.Variables.proxy.xShift).toFixed(2)
                 onEditingFinished: ExGlobals.Variables.proxy.xShift = text
@@ -51,7 +51,7 @@ EaComponents.SideBarColumn {
                 text: "Y-shift"
             }
 
-            TextField {
+            EaElements.TextField {
                 width: 125
                 text: parseFloat(ExGlobals.Variables.proxy.yShift).toFixed(2)
                 onEditingFinished: ExGlobals.Variables.proxy.yShift = text
