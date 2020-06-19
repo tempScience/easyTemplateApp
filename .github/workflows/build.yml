@@ -9,8 +9,8 @@ jobs:
   # This workflow contains a single job called "build"
   build:
 
-    env:
-      QWE: ${GITHUB_REF#refs/*/}
+    #env:
+    #  QWE: ${GITHUB_REF#refs/*/}
 
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
@@ -36,9 +36,10 @@ jobs:
 
     - name: Print environment variables
       run: |
-        echo 'QWE:' $QWE
-        echo 'env.QWE:' ${{ env.QWE }}
+    #    echo 'QWE:' $QWE
+    #    echo 'env.QWE:' ${{ env.QWE }}
         echo 'POETRY_VENV_PATH:' $POETRY_VENV_PATH
+        echo 'env.POETRY_VENV_PATH:' ${{ env.POETRY_VENV_PATH }}
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
         echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
 
@@ -67,15 +68,15 @@ jobs:
     - name: Print Poetry venv path
       run: poetry env info -p
 
-    - name: Set up PyInstaller
-      run: |
-        poetry add macholib
-        poetry add pyinstaller
-    - name: Set up PyInstaller (extra)
-      if: runner.os == 'Windows'
-      run: |
-        poetry add pywin32-ctypes
-        poetry add pefile
+    #- name: Set up PyInstaller
+    #  run: |
+    #    poetry add macholib
+    #    poetry add pyinstaller
+    #- name: Set up PyInstaller (extra)
+    #  if: runner.os == 'Windows'
+    #  run: |
+    #    poetry add pywin32-ctypes
+    #    poetry add pefile
 
     - name: Freeze python app
       run: poetry run python Tools/Scripts/FreezeApp.py
