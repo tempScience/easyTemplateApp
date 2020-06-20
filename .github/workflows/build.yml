@@ -39,12 +39,14 @@ jobs:
     #  run: echo ::set-env name=POETRY_VENV_PATH::C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs}
     #  if: runner.os == 'Windows'
 
-    - name: Print environment variables
+    - name: Print variables
       run: |
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
         echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
         echo 'RUNNER_OS:' $RUNNER_OS
         echo 'runner.os:' ${{ runner.os }}
+        echo 'MATRIX_OS:' $MATRIX_OS
+        echo 'matrix.os:' ${{ matrix.os }}
         echo 'matrix.POETRY_VENV_PATH:' ${{ matrix.POETRY_VENV_PATH }}
 
     - name: Check-out the repository
