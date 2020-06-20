@@ -44,7 +44,7 @@ jobs:
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
         echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
         echo 'RUNNER_OS:' $RUNNER_OS
-        echo 'env.RUNNER_OS:' ${{ env.RUNNER_OS }}
+        echo 'runner.os:' ${{ runner.os }}
         echo 'matrix.POETRY_VENV_PATH:' ${{ matrix.POETRY_VENV_PATH }}
 
     - name: Check-out the repository
