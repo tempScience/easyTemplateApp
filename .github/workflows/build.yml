@@ -88,8 +88,9 @@ jobs:
     #  run: poetry run easyTemplateApp
 
     # Runs a single command using the runners shell
-    #- name: Remove folder
-    #  run: rm -rf dist/easyTemplate/
+    - name: Remove folder
+      if: runner.os == 'macOS'
+      run: rm -rf dist/easyTemplate/
 
     # Creates release zip archive
     #- uses: papeloto/action-zip@v1
