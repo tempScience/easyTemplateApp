@@ -92,7 +92,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Remove folder
       if: runner.os == 'macOS'
-      run: rm -rf dist/easyTemplate/
+      run: rm -rf dist/easyTemplateApp/
 
     # Creates release zip archive
     #- uses: papeloto/action-zip@v1
