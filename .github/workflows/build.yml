@@ -43,6 +43,8 @@ jobs:
       run: |
         echo 'SHORT_GITHUB_REF:' $SHORT_GITHUB_REF
         echo 'env.SHORT_GITHUB_REF:' ${{ env.SHORT_GITHUB_REF }}
+        echo 'RUNNER_OS:' $RUNNER_OS
+        echo 'env.RUNNER_OS:' ${{ env.RUNNER_OS }}
         echo 'matrix.POETRY_VENV_PATH:' ${{ matrix.POETRY_VENV_PATH }}
 
     - name: Check-out the repository
@@ -90,11 +92,13 @@ jobs:
     #  run: rm -rf dist/easyTemplate/
 
     # Creates release zip archive
-    - uses: papeloto/action-zip@v1
-      with:
-        files: dist #dist/easyTemplate.app
-        recursive: true
-        dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
+    #- uses: papeloto/action-zip@v1
+    #  with:
+    #    files: dist #dist/easyTemplate.app
+    #    recursive: true
+    #    dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
+    - name: Create zip archive
+      run: poetry run python Tools/Scripts/ZipArtifacts.py
 
     - name: Upload artifacts to GitHub releases
       uses: ncipollo/release-action@v1
