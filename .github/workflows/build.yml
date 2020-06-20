@@ -21,7 +21,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
         include:
         - os: macos-latest
-          POETRY_VENV_PATH: /Users/runner/.cache/pypoetry/virtualenvs
+          POETRY_VENV_PATH: /Users/runner/Library/Caches/pypoetry/virtualenvs
         - os: ubuntu-latest
           POETRY_VENV_PATH: /home/runner/.cache/pypoetry/virtualenvs
         - os: windows-latest
