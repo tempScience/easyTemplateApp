@@ -3,13 +3,20 @@
 import os, toml
 import Functions
 
-if __name__ == "__main__":
-    config = Functions.config()
-    src = config['ci']['project']['subdirs']['distribution']
 
+config = Functions.config()
+
+def source():
+    return config['ci']['project']['subdirs']['distribution']
+
+def destination():
     project_name = config['tool']['poetry']['name']
     runner_os = Functions.environmentVariable('RUNNER_OS')
     short_github_ref = Functions.environmentVariable('SHORT_GITHUB_REF')
-    dst = f'{project_name}-{runner_os}-{short_github_ref}.zip'
+    return f'{project_name}-{runner_os}-{short_github_ref}.zip'
 
-    Functions.zipdir(src, dst)
+def zipdir():
+    Functions.zipdir(source(), destination())
+
+if __name__ == "__main__":
+    zipdir()

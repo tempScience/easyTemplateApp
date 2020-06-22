@@ -28,11 +28,6 @@ easyTemplateLib = { git = "https://github.com/tempScience/easyTemplateLib.git", 
 #easyAppGui = {git = "https://github.com/tempscience/easyappgui.git", rev = "v0.2.0"}             # download from github v0.2.0 release tag
 #easyAppLogic = "^0.1"                                                                            # download from a custom repository given below
 #easyAppGui = "^0.2"                                                                              # download from a custom repository given below
-# Misc
-#macholib = "^1.14"
-#pyinstaller = "^3.6"
-#pyyaml = ">=5.3"
-#asteval = ">=0.9.18"
 
 [tool.poetry.dev-dependencies]
 # easyScience
@@ -62,9 +57,9 @@ easyTemplateApp = "easyTemplateApp.main:main"
 # CUSTOM CONFIG
 
 [ci.project.subdirs]
-distribution = 'Distribution'
-build = 'Build'
-download = 'Download'
+distribution = '.Distribution'
+build = '.Build'
+download = '.Download'
 
 [ci.app.icon]
 dir = ['Gui', 'Resources', 'Logo']
