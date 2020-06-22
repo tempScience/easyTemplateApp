@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
 import os, sys
+import toml
 import time
 import subprocess
 import zipfile
 
 # FUNCTIONS
+
+def config():
+    return toml.load(os.path.join(os.getcwd(), 'pyproject.toml'))
 
 def osName():
     platform = sys.platform

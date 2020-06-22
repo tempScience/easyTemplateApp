@@ -1,3 +1,9 @@
+# POETRY CONFIG
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
 [tool.poetry]
 name = "easyTemplateApp"
 version = "0.1.0"
@@ -15,21 +21,24 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-easyAppLogic = {git = "https://github.com/tempScience/easyAppLogic.git", rev = "master"}        # download from github branch
-easyAppGui = {git = "https://github.com/tempScience/easyAppGui.git", rev = "master"}            # download from github branch
-easyTemplateLib = {git = "https://github.com/tempScience/easyTemplateLib.git", rev = "master"}  # download from github branch
-#easyAppGui = {git = "https://github.com/tempscience/easyappgui.git", rev = "v0.2.0"}           # download from github v0.2.0 release tag
-#easyAppLogic = "^0.1"                                                                          # download from a custom repository given below
-#easyAppGui = "^0.2"                                                                            # download from a custom repository given below
+# easyScience
+easyAppLogic = { git = "https://github.com/tempScience/easyAppLogic.git", rev = "master" }        # download from github branch
+easyAppGui = { git = "https://github.com/tempScience/easyAppGui.git", rev = "master" }            # download from github branch
+easyTemplateLib = { git = "https://github.com/tempScience/easyTemplateLib.git", rev = "master" }  # download from github branch
+#easyAppGui = {git = "https://github.com/tempscience/easyappgui.git", rev = "v0.2.0"}             # download from github v0.2.0 release tag
+#easyAppLogic = "^0.1"                                                                            # download from a custom repository given below
+#easyAppGui = "^0.2"                                                                              # download from a custom repository given below
+# Misc
 #macholib = "^1.14"
 #pyinstaller = "^3.6"
 #pyyaml = ">=5.3"
 #asteval = ">=0.9.18"
 
 [tool.poetry.dev-dependencies]
-##easyTemplateLib = {path = '../easyTemplateLib'}                            # point to a local directory, changes will be reflected directly in environment
-##easyAppLogic = {path = "../easyAppLogic/"}                                 # point to a local directory, changes will be reflected directly in environment
-##easyAppGui = {path = "../easyAppGui/"}                                     # point to a local directory, changes will be reflected directly in environment
+# easyScience
+easyTemplateLib = { path = '../easyTemplateLib' }                          # point to a local directory, changes will be reflected directly in environment
+easyAppLogic = { path = "../easyAppLogic/" }                               # point to a local directory, changes will be reflected directly in environment
+easyAppGui = { path = "../easyAppGui/" }                                   # point to a local directory, changes will be reflected directly in environment
 #easyAppGui = {path = "../easyAppGui/dist/easyAppGui-0.2.0.tar.gz"}         # install from a local file
 #easyAppLogic = {path = "../easyAppLogic/dist/easyAppLogic-0.1.0.tar.gz"}   # install from a local file
 # poetry install --no-dev shouldn't throw a ValueError ... : # https://github.com/python-poetry/poetry/issues/668
@@ -37,9 +46,10 @@ easyTemplateLib = {git = "https://github.com/tempScience/easyTemplateLib.git", r
 # PyInstaller
 pyinstaller = "^3.6"
 macholib = "^1.14"
-pywin32-ctypes = { version = "^0.2.0", markers = "sys_platform == 'win32'" }
+pywin32-ctypes = { version = "^0.2.0", platform = "win32" } # markers = "sys_platform == 'win32'"
 pefile = { version = "^2019.4.18", platform = "win32" }
 # Misc
+toml = "^0.10"
 matplotlib = "^3.2"
 
 #[[tool.poetry.source]]
@@ -49,6 +59,23 @@ matplotlib = "^3.2"
 [tool.poetry.scripts]
 easyTemplateApp = "easyTemplateApp.main:main"
 
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+# CUSTOM CONFIG
+
+[ci.project.subdirs]
+distribution = 'Distribution'
+build = 'Build'
+download = 'Download'
+
+[ci.app.icon]
+dir = ['Gui', 'Resources', 'Logo']
+name = 'App'
+ext = { macos = 'icns', linux = 'png', windows = 'ico' }
+
+[ci.pyinstaller]
+separator = { macos = ':', linux = ':', windows = ';' }
+
+[ci.qtifw.setup]
+version = '3.2.2'
+base = 'QtInstallerFramework-'
+suffix = { macos = 'mac-x64', linux = 'linux-x64', windows = 'win-x86' }
+ext = { macos = 'dmg', linux = 'run', windows = 'exe' }
