@@ -55,7 +55,7 @@ def runPyInstaller():
             '--clean',                               # Clean PyInstaller cache and remove temporary files before building
             '--windowed',                            # Windows and Mac OS X: do not provide a console window for standard i/o.
             '--onedir',                              # Create a one-folder bundle containing an executable (default)
-            '--log-level', 'INFO',                   # LEVEL may be one of DEBUG, INFO, WARN, ERROR, CRITICAL (default: INFO).
+            '--log-level', 'WARN',                   # LEVEL may be one of DEBUG, INFO, WARN, ERROR, CRITICAL (default: INFO).
             '--distpath', distributionDirPath(),     # Where to put the bundled app (default: ./dist)
             '--workpath', workDirPath(),             # Where to put all the temporary work files, .log, .pyz and etc. (default: ./build)
             f'--add-data={projectData()}',           # Add both project Python and QML source files
