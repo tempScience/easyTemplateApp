@@ -18,7 +18,6 @@ __pycache__
 .coverage
 
 # Poetry
-poetry.lock
 dist
 *.egg-info
 
