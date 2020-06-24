@@ -88,12 +88,14 @@ jobs:
     - name: Create app installer
       run: poetry run python Tools/Scripts/MakeInstaller.py
 
-    - name: PRINT PATHS
-      run: |
-        ls /home/runner
-        ls /home/runner/Qt'
-        ls /home/runner/QtIFW-3.2.2'
-        ls /home/runner/QtIFW-3.2.2/bin
+    - name: ls /home/runner
+      run: ls /home/runner
+    - name: ls /home/runner/Qt
+      run: ls /home/runner/Qt
+    - name: ls /home/runner/Qt/QtIFW-3.2.2
+      run: ls /home/runner/Qt/QtIFW-3.2.2
+    - name: ls /home/runner/Qt/QtIFW-3.2.2/bin
+      run: ls /home/runner/Qt/QtIFW-3.2.2/bin
 
     #- name: Save screenshot
     #  if: runner.os == 'macOS'
