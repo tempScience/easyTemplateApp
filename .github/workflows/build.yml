@@ -12,6 +12,9 @@ jobs:
     #env:
     #  QWE: ${GITHUB_REF#refs/*/}
 
+    # CI skip conditions
+    if: "!contains(github.event.*.message, 'ci skip')"
+
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
 
