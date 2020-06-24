@@ -70,6 +70,7 @@ jobs:
         path: |
           ${{ matrix.POETRY_VENV_PATH }}
           ${{ matrix.QT_PATH }}
+          .Download
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
 
     - name: Create venv and install dependences
