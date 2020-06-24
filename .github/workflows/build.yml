@@ -8,6 +8,7 @@ jobs:
 
   # This workflow contains a single job called "build"
   build:
+    name: Build
 
     #env:
     #  QWE: ${GITHUB_REF#refs/*/}
