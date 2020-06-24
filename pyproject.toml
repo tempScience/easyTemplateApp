@@ -93,7 +93,7 @@ package_xml = 'package.xml'
 
 [ci.pyinstaller]
 separator = { macos = ':', linux = ':', windows = ';' }
-ext = { macos = '.app', linux = '', windows = '' }
+suffix = { macos = '.app', linux = '', windows = '' }
 
 [ci.qtifw.setup]
 version = '3.2.2'
