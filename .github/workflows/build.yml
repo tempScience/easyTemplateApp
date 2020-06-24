@@ -86,7 +86,7 @@ jobs:
       run: poetry run python Tools/Scripts/FreezeApp.py
 
     - name: Create app installer
-      run: poetry run python Tools/Scripts/FreezeApp.py
+      run: poetry run python Tools/Scripts/MakeInstaller.py
 
     #- name: Save screenshot
     #  if: runner.os == 'macOS'
