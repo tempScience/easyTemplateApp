@@ -31,9 +31,9 @@ def printSuccessMessage(message):
     print(report)
 
 def printNeutralMessage(message):
-    dark_gray = '30'
+    bright_blue = '34'
     extended_message = f'* {message}'
-    report = coloredText(message=extended_message, text_color=dark_gray)
+    report = coloredText(message=extended_message, text_color=bright_blue)
     print(report)
 
 def run(*args):
