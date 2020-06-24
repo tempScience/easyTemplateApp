@@ -17,7 +17,7 @@ def qtifwSetupDownloadDest():
     return os.path.join(CONFIG['ci']['project']['subdirs']['download'], f'{qtifwSetupFileName()}')
 
 def qtifwSetupDownloadUrl():
-    base_url = 'https://download.qt.io/official_releases/qt-installer-framework'
+    base_url = CONFIG['ci']['qtifw']['setup']['base_url']
     qtifw_version = CONFIG['ci']['qtifw']['setup']['version']
     return f'{base_url}/{qtifw_version}/{qtifwSetupFileName()}'
 

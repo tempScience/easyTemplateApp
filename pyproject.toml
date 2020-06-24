@@ -97,6 +97,7 @@ suffix = { macos = '.app', linux = '', windows = '' }
 
 [ci.qtifw.setup]
 version = '3.2.2'
+base_url = 'https://download.qt.io/official_releases/qt-installer-framework'
 file_name_base = 'QtInstallerFramework-'
 file_name_suffix = { macos = 'mac-x64', linux = 'linux-x64', windows = 'win-x86' }
 file_ext = { macos = 'dmg', linux = 'run', windows = 'exe' }
