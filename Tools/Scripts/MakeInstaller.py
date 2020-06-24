@@ -154,6 +154,10 @@ def osDependentPreparation():
 def installQtInstallerFramework():
     if os.path.exists(qtifwDirPath()):
         Functions.printNeutralMessage(f'QtInstallerFramework was already installed to {qtifwDirPath()}')
+        Functions.run('cd', '/home/runner')
+        Functions.run('cd', '/home/runner/Qt')
+        Functions.run('cd', '/home/runner/QtIFW-3.2.2')
+        Functions.run('cd', '/home/runner/QtIFW-3.2.2/bin')
         return
     try:
         message = f'install QtInstallerFramework to {qtifwDirPath()}'
@@ -167,6 +171,10 @@ def installQtInstallerFramework():
         sys.exit()
     else:
         Functions.printSuccessMessage(message)
+        Functions.run('cd', '/home/runner')
+        Functions.run('cd', '/home/runner/Qt')
+        Functions.run('cd', '/home/runner/QtIFW-3.2.2')
+        Functions.run('cd', '/home/runner/QtIFW-3.2.2/bin')
 
 def createInstallerSourceDir():
     try:

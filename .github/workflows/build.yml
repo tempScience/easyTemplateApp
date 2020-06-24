@@ -20,12 +20,12 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         include:
-        - os: macos-latest
-          POETRY_VENV_PATH: /Users/runner/Library/Caches/pypoetry/virtualenvs
+#        - os: macos-latest
+#          POETRY_VENV_PATH: /Users/runner/Library/Caches/pypoetry/virtualenvs
         - os: ubuntu-latest
           POETRY_VENV_PATH: /home/runner/.cache/pypoetry/virtualenvs
-        - os: windows-latest
-          POETRY_VENV_PATH: C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs
+#        - os: windows-latest
+#          POETRY_VENV_PATH: C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -82,8 +82,8 @@ jobs:
     #    poetry add pywin32-ctypes
     #    poetry add pefile
 
-    - name: Create freezed python app
-      run: poetry run python Tools/Scripts/FreezeApp.py
+#    - name: Create freezed python app
+#      run: poetry run python Tools/Scripts/FreezeApp.py
 
     - name: Create app installer
       run: poetry run python Tools/Scripts/MakeInstaller.py
