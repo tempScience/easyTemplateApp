@@ -85,6 +85,9 @@ jobs:
 #    - name: Create freezed python app
 #      run: poetry run python Tools/Scripts/FreezeApp.py
 
+    - name: install libxkbcommon0
+      run: sudo apt-get install libxkbcommon0
+
     - name: Create app installer
       run: poetry run python Tools/Scripts/MakeInstaller.py
 
