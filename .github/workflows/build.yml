@@ -18,7 +18,7 @@ jobs:
     # Build matrix for different platforms
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest] #[macos-latest, ubuntu-latest, windows-latest]
         include:
 #        - os: macos-latest
 #          POETRY_VENV_PATH: /Users/runner/Library/Caches/pypoetry/virtualenvs
