@@ -12,8 +12,8 @@ def distributionDir():
 def source():
     app_name = CONFIG['tool']['poetry']['name']
     setup_name = f"{app_name}{CONFIG['ci']['app']['setup']['file_name_suffix']}"
-    setup_file_ext = CONFIG['ci']['app']['setup']['suffix'][Functions.osName()]
-    setup_exe_path = os.path.join(distributionDir(), f'{setup_name}{suffix}')
+    setup_file_ext = CONFIG['ci']['app']['setup']['file_ext'][Functions.osName()]
+    setup_exe_path = os.path.join(distributionDir(), f'{setup_name}.{setup_file_ext}')
     return setup_exe_path
 
 def destination():
