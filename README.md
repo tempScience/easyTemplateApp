@@ -1,7 +1,13 @@
 # easyTemplateApp
 Template for easyScience applications
 
-[![][61]][62]
+[![CI Build][20]][21]
+
+[![Release][30]][31]
+
+[![Downloads][70]][71]
+
+[![License][50]][51] [![License Scan][60]][61]
 
 ## Download easyTemplate
 * Open **Terminal**
@@ -53,7 +59,24 @@ Template for easyScience applications
    ```
 
 <!---URLs--->
+<!---https://naereen.github.io/badges/--->
+
+<!---CI Build Status--->
+[20]: https://github.com/tempScience/easyTemplateApp/workflows/macOS,%20Linux,%20Windows/badge.svg
+[21]: https://github.com/tempScience/easyTemplateApp/actions
+
+<!---Release--->
+[30]: https://img.shields.io/github/release/tempScience/easyTemplateApp.svg
+[31]: https://github.com/tempScience/easyTemplateApp/releases
+
+<!---License--->
+[50]: https://img.shields.io/github/license/tempScience/easyTemplateApp.svg?color=blue&label=license
+[51]: https://github.com/tempScience/easyTemplateApp/blob/master/LICENSE
 
 <!---LicenseScan--->
-[61]: https://app.fossa.com/api/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp.svg?type=shield
-[62]: https://app.fossa.com/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp?ref=badge_shield
+[60]: https://app.fossa.com/api/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp.svg?type=shield
+[61]: https://app.fossa.com/projects/git%2Bgithub.com%2FtempScience%2FeasyTemplateApp?ref=badge_shield
+
+<!---Downloads--->
+[70]: https://img.shields.io/github/downloads/tempScience/easyTemplateApp/total.svg
+[71]: https://github.com/tempScience/easyTemplateApp/releases
