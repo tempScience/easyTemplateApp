@@ -22,10 +22,13 @@ jobs:
         include:
         - os: macos-latest
           POETRY_VENV_PATH: /Users/runner/Library/Caches/pypoetry/virtualenvs
+          QT_PATH: /Users/runner/Qt
         - os: ubuntu-latest
           POETRY_VENV_PATH: /home/runner/.cache/pypoetry/virtualenvs
+          QT_PATH: /home/runner/Qt
         - os: windows-latest
           POETRY_VENV_PATH: C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs
+          QT_PATH: C:\Qt
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -48,6 +51,7 @@ jobs:
         echo 'MATRIX_OS:' $MATRIX_OS
         echo 'matrix.os:' ${{ matrix.os }}
         echo 'matrix.POETRY_VENV_PATH:' ${{ matrix.POETRY_VENV_PATH }}
+        echo 'matrix.QT_PATH:' ${{ matrix.QT_PATH }}
 
     - name: Check-out the repository
       uses: actions/checkout@v2
@@ -63,7 +67,9 @@ jobs:
     - name: Cache Poetry
       uses: actions/cache@v2
       with:
-        path: ${{ matrix.POETRY_VENV_PATH }}
+        path: |
+          ${{ matrix.POETRY_VENV_PATH }}
+          ${{ matrix.QT_PATH }}
         key: ${{ matrix.os }}-poetry-${{ hashFiles('poetry.lock') }}
 
     - name: Create venv and install dependences
