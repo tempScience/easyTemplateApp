@@ -40,9 +40,9 @@ def easyAppGuiData():
 
 def iconPath():
     icon_dir = os.path.join(*CONFIG['ci']['app']['icon']['dir'])
-    icon_name = CONFIG['ci']['app']['icon']['name']
-    icon_ext = CONFIG['ci']['app']['icon']['ext'][Functions.osName()]
-    icon_path = os.path.join(package_name(), icon_dir, f'{icon_name}.{icon_ext}')
+    icon_name = CONFIG['ci']['app']['icon']['file_name']
+    icon_ext = CONFIG['ci']['app']['icon']['file_ext'][Functions.osName()]
+    icon_path = os.path.join(package_name(), icon_dir, f'{icon_name}{icon_ext}')
     return icon_path
 
 def runPyInstaller():

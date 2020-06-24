@@ -70,12 +70,12 @@ download = '.Download'
 
 [ci.app.icon]
 dir = ['Gui', 'Resources', 'Logo']
-name = 'App'
-ext = { macos = 'icns', linux = 'png', windows = 'ico' }
+file_name = 'App'
+file_ext = { macos = '.icns', linux = '.png', windows = '.ico' }
 
 [ci.app.setup]
 file_name_suffix = 'Setup'
-file_ext = { macos = 'app', linux = '', windows = 'exe' }
+file_ext = { macos = '.app', linux = '', windows = '.exe' }
 version = '0.1.0'
 maintenance_tool_suffix = 'Uninstaller'
 installation_dir = { macos = '/Applications', linux = '@ApplicationsDir@', windows = '@ApplicationsDir@' }
@@ -100,4 +100,4 @@ version = '3.2.2'
 base_url = 'https://download.qt.io/official_releases/qt-installer-framework'
 file_name_base = 'QtInstallerFramework-'
 file_name_suffix = { macos = 'mac-x64', linux = 'linux-x64', windows = 'win-x86' }
-file_ext = { macos = 'dmg', linux = 'run', windows = 'exe' }
+file_ext = { macos = '.dmg', linux = '.run', windows = '.exe' }

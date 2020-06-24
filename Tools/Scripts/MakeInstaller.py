@@ -11,7 +11,7 @@ def qtifwSetupFileName():
     file_name_base = CONFIG['ci']['qtifw']['setup']['file_name_base']
     file_name_suffix = CONFIG['ci']['qtifw']['setup']['file_name_suffix'][Functions.osName()]
     file_ext = CONFIG['ci']['qtifw']['setup']['file_ext'][Functions.osName()]
-    return f'{file_name_base}{file_name_suffix}.{file_ext}'
+    return f'{file_name_base}{file_name_suffix}{file_ext}'
 
 def qtifwSetupDownloadDest():
     return os.path.join(CONFIG['ci']['project']['subdirs']['download'], f'{qtifwSetupFileName()}')

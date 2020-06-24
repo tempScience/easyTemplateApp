@@ -231,7 +231,7 @@ def zipDir(source, destination):
     """
     # Check if src exists
     if not os.path.exists(source):
-        printFailMessage(f"Source directory {source} doesn't exist")
+        printFailMessage(f"zip directory (it doesn't exist) {source}")
         sys.exit()
         return
     # create a ZipFile object
