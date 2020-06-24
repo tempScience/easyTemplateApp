@@ -47,6 +47,7 @@ pefile = { version = "^2019.4.18", platform = "win32" }
 toml = "^0.10"
 matplotlib = "^3.2"
 requests = "^2.24"
+dephell_licenses = "^0.1"
 
 #[[tool.poetry.source]]
 #name = "easyScience"
@@ -62,6 +63,9 @@ dir = ['Tools', 'Scripts']
 silent_install = 'SilentInstall.js'
 config_control = 'InstallerControlScript.js'
 package_install = 'InstallerInstallScript.js'
+
+[ci.project]
+license_file = "LICENSE" # how to combine this with tool.poetry.license???
 
 [ci.project.subdirs]
 distribution = '.Distribution'

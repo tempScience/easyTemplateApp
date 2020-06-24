@@ -2,6 +2,7 @@
 
 import os, sys
 import xml.dom.minidom
+import dephell_licenses
 import Functions
 
 
@@ -39,6 +40,9 @@ def qtifwDirPath():
         'windows': f'C:\\Qt\\QtIFW-{qtifw_version}'
     }
     return d[Functions.osName()]
+
+def licenseFile():
+    return CONFIG['ci']['project']['license_file']
 
 def appName():
     return CONFIG['tool']['poetry']['name']
@@ -107,6 +111,8 @@ def installerPackageXml():
         app_version = CONFIG['tool']['poetry']['version']
         release_date = "2020-01-01" #datetime.datetime.strptime(config['release']['date'], "%d %b %Y").strftime("%Y-%m-%d")
         package_install_script = CONFIG['ci']['scripts']['package_install']
+        license_id = CONFIG['tool']['poetry']['license'].replace('-only', '')
+        license_name = dephell_licenses.licenses.get_by_id(license_id).name
         raw_xml = Functions.dict2xml({
             'Package': {
                 'DisplayName': appName(),
@@ -119,8 +125,8 @@ def installerPackageXml():
                 #'RequiresAdminRights': 'true',
                 'Licenses': {
                     'License': {
-                        '@name': "GNU Lesser General Public License v3.0",
-                        '@file': "LICENSE.md"
+                        '@name': license_name,
+                        '@file': licenseFile()
                     }
                 },
                 'Script': package_install_script,
@@ -146,7 +152,7 @@ def osDependentPreparation():
     if Functions.osName() == 'macos':
         Functions.attachDmg(qtifwSetupDownloadDest())
     elif Functions.osName() == 'linux':
-        Functions.run('sudo', 'apt-get', 'install', 'libxkbcommon-x11-0')
+        Functions.run('sudo', 'apt-get', '-qq', 'install', 'libxkbcommon-x11-0')
         Functions.setEnvironmentVariable('QT_QPA_PLATFORM', 'minimal')
         Functions.addReadPermission(qtifwSetupExe())
     else:
@@ -194,7 +200,7 @@ def createInstallerSourceDir():
         Functions.createDir(meta_subsubdir_path)
         Functions.createFile(path=package_xml_path, content=installerPackageXml())
         Functions.copyFile(source=package_install_script_path, destination=meta_subsubdir_path)
-        Functions.copyFile(source='LICENSE.md', destination=meta_subsubdir_path)
+        Functions.copyFile(source=licenseFile(), destination=meta_subsubdir_path)
         Functions.moveDir(source=freezed_app_path, destination=data_subsubdir_path)
     except Exception as exception:
         Functions.printFailMessage(message, exception)

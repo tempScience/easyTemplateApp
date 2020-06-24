@@ -7,7 +7,21 @@ python-versions = "*"
 version = "0.17"
 
 [[package]]
-category = "dev"
+category = "main"
+description = "Classes Without Boilerplate"
+name = "attrs"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "19.3.0"
+
+[package.extras]
+azure-pipelines = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "pytest-azurepipelines"]
+dev = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "sphinx", "pre-commit"]
+docs = ["sphinx", "zope.interface"]
+tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
+
+[[package]]
+category = "main"
 description = "Python package for providing Mozilla's CA Bundle."
 name = "certifi"
 optional = false
@@ -15,7 +29,7 @@ python-versions = "*"
 version = "2020.6.20"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Universal encoding detector for Python 2 and 3"
 name = "chardet"
 optional = false
@@ -32,6 +46,18 @@ version = "0.10.0"
 
 [package.dependencies]
 six = "*"
+
+[[package]]
+category = "main"
+description = "Get info about OSS licenses"
+name = "dephell-licenses"
+optional = false
+python-versions = ">=3.5"
+version = "0.1.7"
+
+[package.dependencies]
+attrs = "*"
+requests = "*"
 
 [[package]]
 category = "dev"
@@ -56,6 +82,7 @@ PySide2 = "^5.13"
 reference = "6700d6cfc6b0c48886866e6adf6cdaae3fccd0de"
 type = "git"
 url = "https://github.com/tempScience/easyAppGui.git"
+
 [[package]]
 category = "main"
 description = ""
@@ -68,6 +95,7 @@ version = "0.1.0"
 reference = "cd534e5f17c2e9d8789dfbed2e431364f4f741e2"
 type = "git"
 url = "https://github.com/tempScience/easyAppLogic.git"
+
 [[package]]
 category = "main"
 description = ""
@@ -89,6 +117,7 @@ version = "^1.6.1"
 reference = "f9a9213cafc3fe29ec769b36585a27bac6290416"
 type = "git"
 url = "https://github.com/tempScience/easyTemplateLib.git"
+
 [[package]]
 category = "dev"
 description = "Clean single-source support for Python 3 and 2"
@@ -99,7 +128,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "0.18.2"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
@@ -229,7 +258,7 @@ python-versions = "*"
 version = "0.2.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Python HTTP for Humans."
 name = "requests"
 optional = false
@@ -282,7 +311,7 @@ python-versions = "*"
 version = "0.10.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 name = "urllib3"
 optional = false
@@ -308,13 +337,17 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "d515bad788634bef343b388b53b5e7c4a19db3065c7477b75062606ab86f3076"
+content-hash = "d904d59a751ee5fd5dd5493a14cd8931f99628869a53f146f0d9a3805fc86097"
 python-versions = "^3.7"
 
 [metadata.files]
 altgraph = [
     {file = "altgraph-0.17-py2.py3-none-any.whl", hash = "sha256:c623e5f3408ca61d4016f23a681b9adb100802ca3e3da5e718915a9e4052cebe"},
     {file = "altgraph-0.17.tar.gz", hash = "sha256:1f05a47122542f97028caf78775a095fbe6a2699b5089de8477eb583167d69aa"},
+]
+attrs = [
+    {file = "attrs-19.3.0-py2.py3-none-any.whl", hash = "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c"},
+    {file = "attrs-19.3.0.tar.gz", hash = "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"},
 ]
 certifi = [
     {file = "certifi-2020.6.20-py2.py3-none-any.whl", hash = "sha256:8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"},
@@ -327,6 +360,10 @@ chardet = [
 cycler = [
     {file = "cycler-0.10.0-py2.py3-none-any.whl", hash = "sha256:1d8a5ae1ff6c5cf9b93e8811e581232ad8920aeec647c37316ceac982b08cb2d"},
     {file = "cycler-0.10.0.tar.gz", hash = "sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8"},
+]
+dephell-licenses = [
+    {file = "dephell-licenses-0.1.7.tar.gz", hash = "sha256:f175cec822a32bda5b56442f48dae39efbb5c3851275ecd41cfd7e849ddd2ea6"},
+    {file = "dephell_licenses-0.1.7-py3-none-any.whl", hash = "sha256:b0b6c93779c4a8d9a82710ef2d5d0fab72e013f335962dc7363831af48570db5"},
 ]
 dis3 = [
     {file = "dis3-0.1.3-py2-none-any.whl", hash = "sha256:61f7720dd0d8749d23fda3d7227ce74d73da11c2fade993a67ab2f9852451b14"},
