@@ -146,6 +146,14 @@ def osDependentPreparation():
     if Functions.osName() == 'macos':
         Functions.attachDmg(qtifwSetupDownloadDest())
     elif Functions.osName() == 'linux':
+        try:
+            message = f'install libxkbcommon-x11-0'
+            Functions.run('sudo', 'apt', 'install', 'libxkbcommon-x11-0')
+        except Exception as exception:
+            Functions.printFailMessage(message, exception)
+            sys.exit()
+        else:
+            Functions.printSuccessMessage(message)
         Functions.setEnvironmentVariable('QT_QPA_PLATFORM', 'minimal')
         Functions.addReadPermission(qtifwSetupExe())
     else:
@@ -227,5 +235,5 @@ if __name__ == "__main__":
     downloadQtInstallerFramework()
     osDependentPreparation()
     installQtInstallerFramework()
-    #createInstallerSourceDir()
-    #createInstallerFile()
+    createInstallerSourceDir()
+    createInstallerFile()

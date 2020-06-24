@@ -82,27 +82,14 @@ jobs:
     #    poetry add pywin32-ctypes
     #    poetry add pefile
 
-#    - name: Create freezed python app
-#      run: poetry run python Tools/Scripts/FreezeApp.py
+    - name: Create freezed python app
+      run: poetry run python Tools/Scripts/FreezeApp.py
 
-    - name: install libxkbcommon-x11-0
-      run: sudo apt install libxkbcommon-x11-0
+    #- name: install libxkbcommon-x11-0
+    #  run: sudo apt install libxkbcommon-x11-0
 
     - name: Create app installer
       run: poetry run python Tools/Scripts/MakeInstaller.py
-
-    - name: ls /
-      run: ls /
-    - name: ls /home/
-      run: ls /home/
-    - name: ls /home/runner/
-      run: ls /home/runner/
-    #- name: ls /home/runner/Qt
-    #  run: ls /home/runner/Qt
-    #- name: ls /home/runner/Qt/QtIFW-3.2.2
-    #  run: ls /home/runner/Qt/QtIFW-3.2.2
-    #- name: ls /home/runner/Qt/QtIFW-3.2.2/bin
-    #  run: ls /home/runner/Qt/QtIFW-3.2.2/bin
 
     #- name: Save screenshot
     #  if: runner.os == 'macOS'
