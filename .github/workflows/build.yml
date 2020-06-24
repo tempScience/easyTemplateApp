@@ -82,7 +82,10 @@ jobs:
     #    poetry add pywin32-ctypes
     #    poetry add pefile
 
-    - name: Freeze python app
+    - name: Create freezed python app
+      run: poetry run python Tools/Scripts/FreezeApp.py
+
+    - name: Create app installer
       run: poetry run python Tools/Scripts/FreezeApp.py
 
     #- name: Save screenshot
@@ -90,9 +93,9 @@ jobs:
     #  run: poetry run easyTemplateApp
 
     # Runs a single command using the runners shell
-    - name: Remove folder
-      if: runner.os == 'macOS'
-      run: rm -rf .Distribution/easyTemplateApp/
+    #- name: Remove folder
+    #  if: runner.os == 'macOS'
+    #  run: rm -rf .Distribution/easyTemplateApp/
 
     # Creates release zip archive
     #- uses: papeloto/action-zip@v1
@@ -100,7 +103,7 @@ jobs:
     #    files: dist #dist/easyTemplate.app
     #    recursive: true
     #    dest: easyTemplate-${{ runner.os }}-${{ env.SHORT_GITHUB_REF }}.zip
-    - name: Create zip archive
+    - name: Create zip of archived artifacts
       run: poetry run python Tools/Scripts/ZipArtifacts.py
 
     - name: Upload artifacts to GitHub releases
@@ -113,4 +116,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit: ${{ env.SHORT_GITHUB_REF }}
         tag: ${{ env.SHORT_GITHUB_REF }}
-        artifacts: "easyTemplate-*.zip"
+        artifacts: ".Distribution/easyTemplateApp-*.zip"

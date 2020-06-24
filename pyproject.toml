@@ -46,6 +46,7 @@ pefile = { version = "^2019.4.18", platform = "win32" }
 # Misc
 toml = "^0.10"
 matplotlib = "^3.2"
+requests = "^2.24"
 
 #[[tool.poetry.source]]
 #name = "easyScience"
@@ -55,6 +56,12 @@ matplotlib = "^3.2"
 easyTemplateApp = "easyTemplateApp.main:main"
 
 # CUSTOM CONFIG
+
+[ci.scripts]
+dir = ['Tools', 'Scripts']
+silent_install = 'SilentInstall.js'
+config_control = 'InstallerControlScript.js'
+package_install = 'InstallerInstallScript.js'
 
 [ci.project.subdirs]
 distribution = '.Distribution'
@@ -66,11 +73,30 @@ dir = ['Gui', 'Resources', 'Logo']
 name = 'App'
 ext = { macos = 'icns', linux = 'png', windows = 'ico' }
 
+[ci.app.setup]
+file_name_suffix = 'Setup'
+file_ext = { macos = 'app', linux = '', windows = 'exe' }
+version = '0.1.0'
+maintenance_tool_suffix = 'Uninstaller'
+installation_dir = { macos = '/Applications', linux = '@ApplicationsDir@', windows = '@ApplicationsDir@' }
+
+[ci.app.setup.build]
+# config
+config_dir = 'config'
+config_xml = 'config.xml'
+# packages
+packages_dir = 'packages'
+url_subdir = 'org.easydiffraction'
+data_subsubdir = 'data'
+meta_subsubdir = 'meta'
+package_xml = 'package.xml'
+
 [ci.pyinstaller]
 separator = { macos = ':', linux = ':', windows = ';' }
+ext = { macos = '.app', linux = '', windows = '' }
 
 [ci.qtifw.setup]
 version = '3.2.2'
-base = 'QtInstallerFramework-'
-suffix = { macos = 'mac-x64', linux = 'linux-x64', windows = 'win-x86' }
-ext = { macos = 'dmg', linux = 'run', windows = 'exe' }
+file_name_base = 'QtInstallerFramework-'
+file_name_suffix = { macos = 'mac-x64', linux = 'linux-x64', windows = 'win-x86' }
+file_ext = { macos = 'dmg', linux = 'run', windows = 'exe' }
