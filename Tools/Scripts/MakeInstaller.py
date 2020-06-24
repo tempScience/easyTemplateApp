@@ -152,7 +152,7 @@ def osDependentPreparation():
     if Functions.osName() == 'macos':
         Functions.attachDmg(qtifwSetupDownloadDest())
     elif Functions.osName() == 'linux':
-        Functions.run('sudo', 'apt-get', '-qq', 'install', 'libxkbcommon-x11-0')
+        Functions.run('sudo', 'apt-get', 'install', '-qq', '-o=Dpkg::Use-Pt', 'libxkbcommon-x11-0')
         Functions.setEnvironmentVariable('QT_QPA_PLATFORM', 'minimal')
         Functions.addReadPermission(qtifwSetupExe())
     else:
