@@ -1,11 +1,27 @@
 import os, sys
-from PySide2.QtCore import QUrl
+from PySide2.QtCore import QUrl, QObject
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtWidgets import QApplication
 
 import easyAppGui
 from easyTemplateApp.Logic.PyQmlProxy import PyQmlProxy
 
+def getQmlObject(qmlEngine, objectName, parentObj=None):
+    referenceBuffer = []
+    if parentObj is None:
+        for root_object in qmlEngine.rootObjects():
+            if root_object.property("objectName") == objectName:
+                return root_object
+            obj = root_object.findChild(QObject, objectName)
+            if obj is not None:
+                referenceBuffer.append(obj)
+                return obj
+    else:
+        obj = parentObj.findChild(QObject, objectName)
+        if obj is not None:
+            referenceBuffer.append(obj)
+            return obj
+    return None
 
 def main():
     # Define paths

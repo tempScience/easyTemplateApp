@@ -5,3 +5,5 @@ MainContentStructureView 1.0 MainContentStructureView.qml
 
 SideBarAdvanced 1.0 SideBarAdvanced.qml
 SideBarBasic 1.0 SideBarBasic.qml
+
+MainContentVTK 1.0 MainContentVTK.qml

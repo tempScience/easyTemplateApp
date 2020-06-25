@@ -161,11 +161,15 @@ EaComponents.ApplicationWindow {
                     EaElements.TabButton {
                         text: qsTr("samples.cif")
                     }
+                    EaElements.TabButton {
+                        text: qsTr("VTK Test")
+                    }
                 ]
 
                 items: [
                     ExSamplePage.MainContentStructureView {},
-                    ExSamplePage.MainContentCifEdit {}
+                    ExSamplePage.MainContentCifEdit {},
+                    ExSamplePage.MainContentVTK {}
                 ]
             }
 
